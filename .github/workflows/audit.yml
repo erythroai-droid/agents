@@ -1,11 +1,7 @@
 name: Website QA Auditor
 
 on:
-  push:
-    branches: [ main ]
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 * * *' # Каждый день в 00:00 UTC
 
 jobs:
   audit:
