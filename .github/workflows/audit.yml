@@ -38,3 +38,4 @@ jobs:
           path: |
             QA_Auditor/reports/audit_data.json
             QA_Auditor/reports/audit-report.md
+            QA_Auditor/reports/audit-report.pdf

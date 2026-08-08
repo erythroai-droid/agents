@@ -4,29 +4,36 @@
 
 === ШАГ 1: СБОР СВЕЖИХ ДАННЫХ ===
 1. Открой встроенный терминал и выполни команду:
-   python scripts/audit_collector.py
+   mvn compile exec:java
 2. Убедись, что скрипт завершился успешно и обновленный файл `reports/audit_data.json` создан на диске.
 
 === ШАГ 2: ИНТЕЛЛЕКТУАЛЬНЫЙ АНАЛИЗ ===
 Прочитай инструкции из `AGENTS.md` и содержимое свежего `reports/audit_data.json`. Проведи глубокий анализ по следующим направлениям:
 
-1. Сетевые ошибки и ресурсы (`failed_requests`):
+1. Сетевые ошибки и ресурсы (`failed_network_requests`):
    - Проверь массив упавших запросов. Выдели все HTTP-ошибки 4xx/5xx, ненайденные изображения, шрифты и сбойные API-эндпоинты.
 
-2. Орфография и грамматика (`spelling_issues`):
+2. Перехват Dev Console и падения JS (`console_logs`, `uncaught_page_errors`):
+   - Проанализируй все вызовы `console.error` и `console.warn`.
+   - Выдели неперехваченные падения JavaScript (`PageError / Uncaught Exceptions`), указав локаль и файл/строку сбоя.
+
+3. Производительность и скорость (Speed Test — `pagespeed_insights`):
+   - Оцени показатели Google PageSpeed Insights (Performance, Accessibility, Best Practices, SEO) для `mobile` и `desktop`.
+   - Проанализируй ключевые метрики Core Web Vitals (FCP, LCP, CLS, TBT, Speed Index, TTI) и выдели узкие места.
+
+4. Орфография и грамматика (`spelling_issues`):
    - Проанализируй найденные опечатки для `en` и `ru`.
    - Отфильтруй false-positive (названия брендов, узкоспециализированные IT-термины, имена собственные).
    - Сформулируй исправления для реальных ошибок.
 
-3. Смысловой анализ и полнота переводов (`content_by_locale`):
+5. Смысловой анализ и полнота переводов (`audits_by_locale`):
    - Используй локаль English (`en`) как эталон (Source of Truth).
    - Сравни массивы уникальных строк `ru` и `he` с `en`.
    - Найди пропущенные контентные блоки, карточки, заголовки.
    - Идентифицируй сырые ключи локализации (например, `common.header.title`), тексты-заглушки (`Lorem ipsum`, `{{key}}`) или оставшиеся непереведенными английские фразы в русской и ивритской версиях.
-   - Оцени корректность смыслового перевода и точность терминологии.
 
-4. Анализ локали Иврит (`he` — RTL):
-   - Проверь извлеченный текст иврита на корректность отображения специфических символов, знаков препинания и направления чтения.
+6. Анализ локали Иврит (`he` — RTL):
+   - Проверь извлеченный текст иврита на корректность отображения специфических симво символов, знаков препинания и направления чтения.
    - Выдели компоненты, требующие визуальной проверки атрибутов `dir="rtl"` и переноса интерфейсных элементов.
 
 === ШАГ 3: ФОРМИРОВАНИЕ ИТОГОВОГО ОТЧЕТА ===
@@ -38,29 +45,38 @@
 **Дата проверки:** [Укажи текущую дату и время]
 **Эталонная локаль:** English (`en`) | **Проверяемые локали:** Русский (`ru`), Иврит (`he`)
 
-##  EXECUTIVE SUMMARY
+## EXECUTIVE SUMMARY
 - Общий статус сайта (Pass / Conditional Pass / Fail).
-- Метрики: Количество упавших сетевых запросов | Орфографические ошибки | Пропуски в переводах.
+- Метрики: Ошибки HTTP 4xx/5xx | Dev Console / JS errors | PageSpeed Score | Орфографические ошибки.
 
-## 1. 🌐 NETWORK & RESOURCE ERRORS
+## 1. 🖥️ DEV CONSOLE & UNCAUGHT JS ERRORS
+*(Если ошибок нет, напиши: "Ошибок JS и предупреждений в консоли браузера не обнаружено")*
+| Error Type (`console.error` / `console.warn` / `PageError`) | Message / Exception | Source Location | Active Locale |
+| :--- | :--- | :--- | :--- |
+
+## 2. ⚡ SPEED TEST & PERFORMANCE METRICS (PAGESPEED INSIGHTS)
+| Strategy | Performance Score | Accessibility Score | Best Practices Score | SEO Score | FCP | LCP | CLS | TBT | Speed Index |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+
+## 3. 🌐 NETWORK & RESOURCE ERRORS
 *(Если ошибок нет, напиши: "Сетевых ошибок HTTP 4xx/5xx не обнаружено")*
-| Target URL | Status Code | Error Description |
-| :--- | :--- | :--- |
+| Target URL | Status Code | Error Description | Active Locale |
+| :--- | :--- | :--- | :--- |
 
-## 2. ✍️ SPELLING & GRAMMAR ISSUES
+## 4. ✍️ SPELLING & GRAMMAR ISSUES
 | Locale | Text Snippet | Detected Issue | Suggested Correction |
 | :--- | :--- | :--- | :--- |
 
-## 3. 🌐 TRANSLATION & LOCALIZATION DISCREPANCIES
+## 5. 🌐 TRANSLATION & LOCALIZATION DISCREPANCIES
 | EN Reference (Source of Truth) | Target Locale (`ru` / `he`) | Issue Type (Missing Content / Untranslated Key / Bad Translation) | Current Target Text / Description |
 | :--- | :--- | :--- | :--- |
 
-## 4. 📐 HEBREW (RTL) & UI RECOMMENDATIONS
+## 6. 📐 HEBREW (RTL) & UI RECOMMENDATIONS
 - Список замеченных проблем или рекомендаций по верстке интерфейса для иврита.
 
-## 5. 🎯 ACTION ITEMS & FIX PRIORITIES
-- **Critical (P0):** Блокирующие ошибки (упавшие API, битые страницы, непереведенные ключевые элементы).
-- **High (P1):** Орфографические ошибки, явные пропуски текста в RU/HE.
+## 7. 🎯 ACTION ITEMS & FIX PRIORITIES
+- **Critical (P0):** Блокирующие ошибки (PageError JS, упавшие API, критические пропуски переводов).
+- **High (P1):** Ошибки производительности PageSpeed, console.error, орфография.
 - **Medium (P2):** Рекомендации по стилю, терминологии и мелкие улучшения RTL.
 
 Приступай к выполнению Шага 1 прямо сейчас.

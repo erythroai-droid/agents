@@ -11,7 +11,7 @@ Perform a comprehensive QA audit of https://erythro.ai across 3 supported locale
   - `he` — Target translation (RTL / Right-to-Left layout)
 - **Locale Routing Model**: SPA / Dynamic Locale Switching (No URL prefixes like `/en/`, `/ru/`, or `/he/`).
 
-The agent must audit spelling and grammar, dead links, translation completeness against English, and layout integrity (especially RTL rendering for Hebrew).
+The agent must audit spelling and grammar, dead links, translation completeness against English, layout integrity (especially RTL rendering for Hebrew), Dev Console JavaScript errors/warnings, uncaught page exceptions, and PageSpeed Insights performance metrics.
 
 ---
 
@@ -19,7 +19,7 @@ The agent must audit spelling and grammar, dead links, translation completeness 
 
 ### 1. Multi-Locale Browser Navigation
 
-- Use the Browser Subagent (`/browser`) to audit `https://erythro.ai`.
+- Use the Browser Subagent (`/browser`) or `AuditCollector` to audit `https://erythro.ai`.
 - Since URLs do not contain language paths, switch locales deterministically using one of the following methods:
   1. **UI Switcher**: Click the language switcher component in the burger menu (EN -> RU -> HE).
   2. **Storage State**: Inject `localStorage.setItem('i18nextLng', 'he')` / `localStorage.setItem('locale', 'he')` or equivalent cookie.
@@ -63,33 +63,67 @@ The agent must audit spelling and grammar, dead links, translation completeness 
 
 ---
 
+### 6. Dev Console Interception (JS Errors & Warnings)
+
+- Intercept and record all browser console activities:
+  - **`console.error` / `console.warn`**: Manual log entries or third-party script errors.
+  - **`PageError` (Uncaught Exceptions)**: Unhandled runtime JavaScript crashes.
+- Record the exact location (file URL, line/column number), message text, and locale context during which the error occurred.
+
+---
+
+### 7. Speed Test & Performance Metrics (PageSpeed Insights)
+
+- Query Google PageSpeed Insights API v5 for `mobile` and `desktop` strategies:
+  - Overall Category Scores: Performance, Accessibility, Best Practices, SEO (0–100).
+  - Core Web Vitals & Key Audits:
+    - First Contentful Paint (FCP)
+    - Largest Contentful Paint (LCP)
+    - Cumulative Layout Shift (CLS)
+    - Total Blocking Time (TBT)
+    - Speed Index
+    - Time to Interactive (TTI)
+
+---
+
 ## Output & Artifacts
 
-Generate a detailed Markdown report at `./reports/audit-report.md` structured as follows:
+Generate detailed report artifacts at `./reports/audit-report.pdf` (PDF format), `./reports/audit-report.md` (Markdown format), and `./reports/audit_data.json` (raw JSON data) structured as follows:
 
 ### 1. Executive Summary
 
 - Overall status of https://erythro.ai.
 - Total broken links count.
 - Total spelling/grammar errors per language (`en`, `ru`, `he`).
-- Overall translation completeness score (% match against EN reference).
+- Total Dev Console errors & uncaught JavaScript exceptions.
+- PageSpeed Insights overall performance score (`mobile` / `desktop`).
 
 ### 2. Broken Links Table
 
 | Current Page Path | Target Link | Status Code / Error | Active Locale |
 | :---------------- | :---------- | :------------------ | :------------ |
 
-### 3. Spelling & Grammar Issues Table
+### 3. Dev Console & JS Errors Table
+
+| Error Type (`console.error` / `console.warn` / `PageError`) | Message / Exception Snippet | Location / Source | Active Locale |
+| :----------------------------------------------------------- | :-------------------------- | :---------------- | :------------ |
+
+### 4. PageSpeed Insights & Performance Metrics Table
+
+| Strategy | Performance Score | Accessibility Score | Best Practices Score | SEO Score | FCP | LCP | CLS | TBT | Speed Index |
+| :------- | :---------------- | :------------------ | :------------------- | :-------- | :-- | :-- | :-- | :-- | :---------- |
+
+### 5. Spelling & Grammar Issues Table
 
 | Page / Section | Active Locale | Issue Found | Context / Text Snippet | Suggested Correction |
 | :------------- | :------------ | :---------- | :--------------------- | :------------------- |
 
-### 4. Translation & Structural Discrepancies
+### 6. Translation & Structural Discrepancies
 
 | Element / Section ID | EN Original Snippet | Target Locale (`ru` / `he`) | Issue Type (Missing Text / Untranslated Key / Bad Translation) | Current Target Snippet |
 | :------------------- | :------------------ | :-------------------------- | :------------------------------------------------------------- | :--------------------- |
 
-### 5. Layout & RTL Rendering Issues (`he`)
+### 7. Layout & RTL Rendering Issues (`he`)
 
 | Page / Component | Issue Description | Expected Behavior | Visual Impact |
 | :--------------- | :---------------- | :---------------- | :------------ |
