@@ -16,15 +16,15 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Java 17
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
 
-      - name: Install Playwright Browsers & Dependencies
+      - name: Install Playwright Browsers & OS Dependencies
         run: |
-          mvn exec:java -Dexec.mainClass="com.microsoft.playwright.CLI" -Dexec.args="install-deps"
+          npx playwright install --with-deps
 
       - name: Run QA Audit Collector
         env:
