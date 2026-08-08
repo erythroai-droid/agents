@@ -30,6 +30,29 @@ public class AuditCollector {
     private static final String AXE_CORE_URL = "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js";
     private static final String OUTPUT_FILE = "reports/audit_data.json";
 
+    private static String getGeminiApiKey() {
+        String key = System.getenv("GEMINI_API_KEY");
+        if (key != null && !key.isBlank()) {
+            return key;
+        }
+        key = System.getProperty("GEMINI_API_KEY");
+        if (key != null && !key.isBlank()) {
+            return key;
+        }
+        File envFile = new File(".env");
+        if (envFile.exists()) {
+            try {
+                List<String> lines = java.nio.file.Files.readAllLines(envFile.toPath());
+                for (String line : lines) {
+                    if (line.startsWith("GEMINI_API_KEY=")) {
+                        return line.substring("GEMINI_API_KEY=".length()).trim();
+                    }
+                }
+            } catch (Exception ignored) {}
+        }
+        return null;
+    }
+
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class AuditExceptions {
         public String description;
@@ -50,6 +73,13 @@ public class AuditCollector {
 
     public static void main(String[] args) throws IOException {
         System.out.println("[+] Запуск глубокого аудита сайта на Java...");
+        
+        String apiKey = getGeminiApiKey();
+        if (apiKey != null && !apiKey.isBlank()) {
+            System.out.println("[+] GEMINI_API_KEY успешно загружен в агента.");
+        } else {
+            System.out.println("[!] GEMINI_API_KEY не обнаружен. Запуск в автобазовом режиме.");
+        }
         
         Map<String, Object> finalReport = new HashMap<>();
         List<Map<String, Object>> failedRequests = new CopyOnWriteArrayList<>();
