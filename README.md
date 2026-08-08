@@ -47,3 +47,23 @@ mvn compile exec:java
 - `src/main/java/ai/erythro/AuditCollector.java` — Главный класс логики сбора и анализа данных.
 - `config/audit_exceptions.json` — Реестр исключений и брендовых терминов (брендбук, техническая терминология).
 - `reports/` — Директория с генерируемыми отчетами.
+- `.github/workflows/audit.yml` — GitHub Actions Workflow для автоматического запуска аудита.
+
+---
+
+## ⚡ Запуск через GitHub Actions
+
+В проект добавлен готовый workflow [`.github/workflows/audit.yml`](file:///.github/workflows/audit.yml).
+
+### Настройка секретов (API Key)
+1. Перейдите в ваш репозиторий GitHub: **Settings -> Secrets and variables -> Actions**.
+2. Нажмите **New repository secret**.
+3. Имя: `GEMINI_API_KEY`, Значение: ваш ключ (например, `AIzaSy...`).
+
+### Запуск вручную из интерфейса GitHub:
+1. Откройте вкладку **Actions** в репозитории на GitHub.
+2. Выберите **Website QA Auditor** в левом меню.
+3. Нажмите **Run workflow** -> **Run workflow**.
+
+После завершения воркфлоу отчеты `audit_data.json` и `audit-report.md` будут доступны для скачивания в артефактах запуска (**Artifacts**).
+

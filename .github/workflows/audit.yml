@@ -1,0 +1,42 @@
+name: Website QA Auditor
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *' # Каждый день в 00:00 UTC
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Install Playwright Browsers & Dependencies
+        run: |
+          mvn exec:java -Dexec.mainClass="com.microsoft.playwright.CLI" -Dexec.args="install-deps"
+
+      - name: Run QA Audit Collector
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          mvn compile exec:java
+
+      - name: Upload Audit Reports as Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: audit-reports
+          path: |
+            reports/audit_data.json
+            reports/audit-report.md
