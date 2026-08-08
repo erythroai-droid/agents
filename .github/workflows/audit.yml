@@ -17,14 +17,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-          cache-dependency-path: 'All_agents/QA_Auditor/pom.xml'
+          cache-dependency-path: 'QA_Auditor/pom.xml'
 
       - name: Install Playwright Browsers & OS Dependencies
         run: |
           npx playwright install --with-deps
 
       - name: Run QA Audit Collector
-        working-directory: All_agents/QA_Auditor
+        working-directory: QA_Auditor
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
@@ -36,5 +36,5 @@ jobs:
         with:
           name: audit-reports
           path: |
-            All_agents/QA_Auditor/reports/audit_data.json
-            All_agents/QA_Auditor/reports/audit-report.md
+            QA_Auditor/reports/audit_data.json
+            QA_Auditor/reports/audit-report.md
