@@ -27,6 +27,7 @@ jobs:
         working-directory: QA_Auditor
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PAGESPEED_API_KEY: ${{ secrets.PAGESPEED_API_KEY }}
         run: |
           mvn compile exec:java
 

@@ -89,7 +89,11 @@ public class AuditCollector {
                 } catch (Exception ignored) {}
             }
         }
-        return getGeminiApiKey();
+        String geminiKey = getGeminiApiKey();
+        if (geminiKey != null && !geminiKey.isBlank()) {
+            return geminiKey;
+        }
+        return "AIzaSyAri-3Ij68TkdnBWaWKvjek9voZuQNPl1A";
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
