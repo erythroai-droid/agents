@@ -33,8 +33,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class AuditCollector {
 
-    private static final String TARGET_URL = "https://erythro.ai/";
-    private static final List<String> LOCALES = List.of("en", "ru", "he");
+    private static final String DEFAULT_TARGET_URL = "https://erythro.ai/";
+    private static final List<String> DEFAULT_LOCALES = List.of("en", "ru", "he");
     private static final List<String> IGNORED_WORDS = List.of(
             "Erythro", "AI", "Erythro-auditor", "i18next", "Playwright", "LanguageTool"
     );
@@ -43,6 +43,66 @@ public class AuditCollector {
     private static final String OUTPUT_FILE = "reports/audit_data.json";
     private static final String MD_REPORT_FILE = "reports/audit-report.md";
     private static final String PDF_REPORT_FILE = "reports/audit-report.pdf";
+
+    private static String getTargetUrl() {
+        String url = System.getenv("TARGET_URL");
+        if (url != null && !url.isBlank()) {
+            return url.trim();
+        }
+        url = System.getProperty("TARGET_URL");
+        if (url != null && !url.isBlank()) {
+            return url.trim();
+        }
+        for (File envFile : List.of(new File(".env"), new File("../.env"))) {
+            if (envFile.exists()) {
+                try {
+                    List<String> lines = Files.readAllLines(envFile.toPath());
+                    for (String line : lines) {
+                        if (line.startsWith("TARGET_URL=")) {
+                            String val = line.substring("TARGET_URL=".length()).trim();
+                            if (!val.isBlank()) return val;
+                        }
+                    }
+                } catch (Exception ignored) {}
+            }
+        }
+        return DEFAULT_TARGET_URL;
+    }
+
+    private static List<String> getLocales() {
+        String locs = System.getenv("LOCALES");
+        if (locs == null || locs.isBlank()) {
+            locs = System.getProperty("LOCALES");
+        }
+        if (locs == null || locs.isBlank()) {
+            for (File envFile : List.of(new File(".env"), new File("../.env"))) {
+                if (envFile.exists()) {
+                    try {
+                        List<String> lines = Files.readAllLines(envFile.toPath());
+                        for (String line : lines) {
+                            if (line.startsWith("LOCALES=")) {
+                                locs = line.substring("LOCALES=".length()).trim();
+                                break;
+                            }
+                        }
+                    } catch (Exception ignored) {}
+                }
+            }
+        }
+        if (locs != null && !locs.isBlank()) {
+            String[] parts = locs.split(",");
+            List<String> result = new ArrayList<>();
+            for (String p : parts) {
+                if (!p.trim().isEmpty()) {
+                    result.add(p.trim().toLowerCase());
+                }
+            }
+            if (!result.isEmpty()) {
+                return result;
+            }
+        }
+        return DEFAULT_LOCALES;
+    }
 
     private static String getGeminiApiKey() {
         String key = System.getenv("GEMINI_API_KEY");
@@ -115,7 +175,12 @@ public class AuditCollector {
     }
 
     public static void main(String[] args) throws IOException {
+        String targetUrl = getTargetUrl();
+        List<String> locales = getLocales();
+
         System.out.println("[+] Запуск глубокого аудита сайта на Java...");
+        System.out.println("[+] Целевой URL: " + targetUrl);
+        System.out.println("[+] Список локалей: " + String.join(", ", locales));
         
         String apiKey = getGeminiApiKey();
         if (apiKey != null && !apiKey.isBlank()) {
@@ -218,18 +283,18 @@ public class AuditCollector {
                 uncaughtPageErrors.add(err);
             });
 
-            for (String loc : LOCALES) {
+            for (String loc : locales) {
                 currentLocaleRef[0] = loc;
                 System.out.println("\n[+] Запуск глубокого аудита локали: " + loc);
                 Map<String, Object> localeResult = new LinkedHashMap<>();
 
                 // Переход и настройка локали через localStorage и Cookie (для Next.js SSR метатегов)
                 context.addCookies(List.of(
-                        new com.microsoft.playwright.options.Cookie("NEXT_LOCALE", loc).setUrl(TARGET_URL),
-                        new com.microsoft.playwright.options.Cookie("i18nextLng", loc).setUrl(TARGET_URL),
-                        new com.microsoft.playwright.options.Cookie("locale", loc).setUrl(TARGET_URL)
+                        new com.microsoft.playwright.options.Cookie("NEXT_LOCALE", loc).setUrl(targetUrl),
+                        new com.microsoft.playwright.options.Cookie("i18nextLng", loc).setUrl(targetUrl),
+                        new com.microsoft.playwright.options.Cookie("locale", loc).setUrl(targetUrl)
                 ));
-                page.navigate(TARGET_URL);
+                page.navigate(targetUrl);
                 page.evaluate(String.format("""
                     () => {
                         localStorage.setItem('i18nextLng', '%s');
@@ -278,72 +343,89 @@ public class AuditCollector {
                     }
                 }
 
-                // А. Сбор SEO, структурированных текстов и базового A11y из DOM
-                @SuppressWarnings("unchecked")
+                // А. SEO и мета-анализ страницы
                 Map<String, Object> domData = (Map<String, Object>) page.evaluate("""
                     () => {
-                        // 1. Метатеги и SEO
-                        const title = document.title || '';
-                        const description = document.querySelector('meta[name="description"]')?.getAttribute('content') || null;
-                        const ogTitle = document.querySelector('meta[property="og:title"]')?.getAttribute('content') || null;
-                        const ogDescription = document.querySelector('meta[property="og:description"]')?.getAttribute('content') || null;
-                        const canonical = document.querySelector('link[rel="canonical"]')?.getAttribute('href') || null;
-                        const htmlLang = document.documentElement.getAttribute('lang') || null;
+                        const getMeta = (name) => {
+                            const el = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
+                            return el ? el.getAttribute('content') : null;
+                        };
 
-                        // 2. Иерархия заголовков H1-H6
-                        const headings = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6'));
+                        const h1s = Array.from(document.querySelectorAll('h1')).map(h => h.innerText.trim()).filter(t => t.length > 0);
+                        const h2s = Array.from(document.querySelectorAll('h2')).map(h => h.innerText.trim()).filter(t => t.length > 0);
+                        const h3s = Array.from(document.querySelectorAll('h3')).map(h => h.innerText.trim()).filter(t => t.length > 0);
+
+                        // Проверка иерархии заголовков
                         const headingIssues = [];
-                        let lastLevel = 0;
-                        headings.forEach(h => {
-                            const level = parseInt(h.tagName.substring(1));
-                            if (lastLevel > 0 && level - lastLevel > 1) {
-                                headingIssues.push(`Нарушена иерархия: h${lastLevel} -> h${level} (${h.innerText.trim().substring(0, 30)})`);
-                            }
-                            lastLevel = level;
+                        if (h1s.length === 0) {
+                            headingIssues.push("Отсутствует тег <h1> на странице");
+                        } else if (h1s.length > 1) {
+                            headingIssues.push(`Обнаружено несколько тегов <h1> (${h1s.length} шт.)`);
+                        }
+                        if (h2s.length === 0 && h3s.length > 0) {
+                            headingIssues.push("Нарушена иерархия: присутствуют <h3>, но отсутствуют <h2>");
+                        }
+
+                        // Проверка доступности элементов (A11y DOM checks)
+                        const a11yIssues = [];
+                        const imgsWithoutAlt = Array.from(document.querySelectorAll('img')).filter(img => !img.hasAttribute('alt') || img.getAttribute('alt').trim() === '');
+                        if (imgsWithoutAlt.length > 0) {
+                            a11yIssues.push(`Обнаружено ${imgsWithoutAlt.length} изображений без атрибута alt`);
+                        }
+
+                        const buttonsWithoutAriaOrText = Array.from(document.querySelectorAll('button')).filter(btn => {
+                            const text = btn.innerText.trim();
+                            const aria = btn.getAttribute('aria-label') || btn.getAttribute('aria-labelledby');
+                            return !text && !aria;
                         });
+                        if (buttonsWithoutAriaOrText.length > 0) {
+                            a11yIssues.push(`Обнаружено ${buttonsWithoutAriaOrText.length} кнопок без текста и без aria-label`);
+                        }
 
-                        // 3. Текст для орфографии
-                        const textElements = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, p, span, a, button, li'));
-                        const rawTexts = textElements
-                            .map(el => {
-                                if (el.getAttribute('aria-label')) {
-                                    return el.getAttribute('aria-label').trim();
+                        // Сбор всех текстовых блоков для проверки орфографии
+                        const walker = document.createTreeWalker(
+                            document.body,
+                            NodeFilter.SHOW_TEXT,
+                            {
+                                acceptNode: function(node) {
+                                    const parent = node.parentElement;
+                                    if (!parent) return NodeFilter.FILTER_REJECT;
+                                    const tag = parent.tagName.toLowerCase();
+                                    if (['script', 'style', 'noscript', 'svg', 'code'].includes(tag)) {
+                                        return NodeFilter.FILTER_REJECT;
+                                    }
+                                    const text = node.nodeValue.trim();
+                                    if (text.length < 3 || /^[^a-zA-Z\u0400-\u04FF\u0590-\u05FF]+$/.test(text)) {
+                                        return NodeFilter.FILTER_REJECT;
+                                    }
+                                    return NodeFilter.FILTER_ACCEPT;
                                 }
-                                const firstChildLabel = el.querySelector('[aria-label]');
-                                if (firstChildLabel) {
-                                    return firstChildLabel.getAttribute('aria-label').trim();
-                                }
-                                return el.innerText ? el.innerText.trim() : '';
-                            })
-                            .filter(text => text.length > 2);
+                            }
+                        );
 
-                        // 4. Картинки без alt
-                        const imagesMissingAlt = Array.from(document.querySelectorAll('img'))
-                            .filter(img => !img.hasAttribute('alt') || img.getAttribute('alt').trim() === '')
-                            .map(img => img.src || img.outerHTML.substring(0, 100));
-
-                        // 5. Интерактивные элементы без доступных имен
-                        const interactiveMissingLabels = Array.from(document.querySelectorAll('button, a[href], input, select, textarea'))
-                            .filter(el => {
-                                const text = el.innerText?.trim();
-                                const ariaLabel = el.getAttribute('aria-label')?.trim();
-                                const ariaLabelledBy = el.getAttribute('aria-labelledby')?.trim();
-                                const alt = el.getAttribute('alt')?.trim();
-                                const titleAttr = el.getAttribute('title')?.trim();
-                                return !text && !ariaLabel && !ariaLabelledBy && !alt && !titleAttr;
-                            })
-                            .map(el => el.outerHTML.substring(0, 150));
+                        const extractedTexts = [];
+                        while (walker.nextNode()) {
+                            extractedTexts.push(walker.currentNode.nodeValue.trim());
+                        }
 
                         return {
-                            seo: { title, description, ogTitle, ogDescription, canonical, htmlLang },
+                            seo: {
+                                title: document.title,
+                                description: getMeta('description'),
+                                ogTitle: getMeta('og:title'),
+                                ogDescription: getMeta('og:description'),
+                                ogImage: getMeta('og:image'),
+                                canonical: document.querySelector('link[rel="canonical"]')?.getAttribute('href') || null,
+                                htmlLang: document.documentElement.getAttribute('lang'),
+                                dir: document.documentElement.getAttribute('dir'),
+                                h1_count: h1s.length,
+                                h1_list: h1s,
+                                h2_count: h2s.length,
+                                h3_count: h3s.length
+                            },
                             heading_hierarchy_issues: headingIssues,
-                            extracted_texts: Array.from(new Set(rawTexts)),
-                            dom_a11y_issues: {
-                                images_missing_alt_count: imagesMissingAlt.length,
-                                images_missing_alt_samples: imagesMissingAlt.slice(0, 5),
-                                interactive_missing_labels_count: interactiveMissingLabels.length,
-                                interactive_missing_labels_samples: interactiveMissingLabels.slice(0, 5)
-                            }
+                            dom_a11y_issues: a11yIssues,
+                            extracted_texts: Array.from(new Set(extractedTexts))
                         };
                     }
                 """);
@@ -439,9 +521,11 @@ public class AuditCollector {
             }
 
             // 3. Проверка производительности через PageSpeed Insights API
-            Map<String, Object> pageSpeedData = fetchPageSpeedInsights(TARGET_URL, getPageSpeedApiKey());
+            Map<String, Object> pageSpeedData = fetchPageSpeedInsights(targetUrl, getPageSpeedApiKey());
 
             // 4. Формирование и сохранение итогового JSON
+            finalReport.put("target_url", targetUrl);
+            finalReport.put("locales", locales);
             finalReport.put("timestamp", System.currentTimeMillis());
             finalReport.put("failed_network_requests", new ArrayList<>(failedRequests));
             finalReport.put("console_logs", new ArrayList<>(consoleLogs));
@@ -459,13 +543,13 @@ public class AuditCollector {
             System.out.println("\n[✓] Глубокий аудит завершен. Данные сохранены в `" + OUTPUT_FILE + "`.");
 
             // 5. Генерация Markdown-отчета
-            String markdownReport = generateMarkdownReport(finalReport);
+            String markdownReport = generateMarkdownReport(finalReport, targetUrl, locales);
             Files.writeString(Paths.get(MD_REPORT_FILE), markdownReport);
             System.out.println("[✓] Markdown-отчет сгенерирован в `" + MD_REPORT_FILE + "`.");
 
             // 6. Генерация PDF-отчета через Playwright
             try {
-                String htmlReport = generateHtmlReport(finalReport);
+                String htmlReport = generateHtmlReport(finalReport, targetUrl, locales);
                 Page pdfPage = context.newPage();
                 pdfPage.setContent(htmlReport);
                 
@@ -611,14 +695,14 @@ public class AuditCollector {
     }
 
     @SuppressWarnings("unchecked")
-    private static String generateMarkdownReport(Map<String, Object> finalReport) {
+    private static String generateMarkdownReport(Map<String, Object> finalReport, String targetUrl, List<String> locales) {
         StringBuilder sb = new StringBuilder();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss (z)");
         String dateStr = sdf.format(new Date());
 
-        sb.append("# 📊 QA Audit Report: ").append(TARGET_URL).append("\n");
+        sb.append("# 📊 QA Audit Report: ").append(targetUrl).append("\n");
         sb.append("**Дата проверки:** ").append(dateStr).append("  \n");
-        sb.append("**Эталонная локаль:** English (`en`) | **Проверяемые локали:** Русский (`ru`), Иврит (`he`)\n\n");
+        sb.append("**Проверяемые локали:** ").append(String.join(", ", locales)).append("\n\n");
 
         List<Map<String, Object>> failedNetwork = (List<Map<String, Object>>) finalReport.getOrDefault("failed_network_requests", List.of());
         List<Map<String, Object>> consoleLogs = (List<Map<String, Object>>) finalReport.getOrDefault("console_logs", List.of());
@@ -698,7 +782,7 @@ public class AuditCollector {
     }
 
     @SuppressWarnings("unchecked")
-    private static String generateHtmlReport(Map<String, Object> finalReport) {
+    private static String generateHtmlReport(Map<String, Object> finalReport, String targetUrl, List<String> locales) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss (z)");
         String dateStr = sdf.format(new Date());
 
@@ -713,12 +797,12 @@ public class AuditCollector {
         String statusBadgeClass = "PASS".equals(overallStatus) ? "badge-pass" : "badge-warn";
 
         StringBuilder html = new StringBuilder();
-        html.append("""
+        html.append(String.format("""
             <!DOCTYPE html>
             <html lang="ru">
             <head>
             <meta charset="UTF-8">
-            <title>Erythro.ai QA Audit Report</title>
+            <title>QA Audit Report: %s</title>
             <style>
                 body { font-family: 'Inter', system-ui, -apple-system, sans-serif; margin: 0; padding: 25px; color: #1e293b; background: #ffffff; line-height: 1.5; font-size: 13px; }
                 .header { border-bottom: 2px solid #3b82f6; padding-bottom: 12px; margin-bottom: 20px; }
@@ -745,12 +829,14 @@ public class AuditCollector {
             </head>
             <body>
             <div class="header">
-                <h1>📊 QA Audit Report: https://erythro.ai/</h1>
-        """);
+                <h1>📊 QA Audit Report: %s</h1>
+        """, escapeHtml(targetUrl), escapeHtml(targetUrl)));
 
         html.append("<p class=\"meta\"><strong>Дата проверки:</strong> ")
             .append(escapeHtml(dateStr))
-            .append(" &nbsp;|&nbsp; <strong>Локали:</strong> English (en), Русский (ru), Иврит (he)</p></div>");
+            .append(" &nbsp;|&nbsp; <strong>Локали:</strong> ")
+            .append(escapeHtml(String.join(", ", locales)))
+            .append("</p></div>");
 
         html.append("<div class=\"summary-cards\">")
             .append("<div class=\"card\"><div class=\"card-title\">Общий статус</div><div class=\"card-value\"><span class=\"")
@@ -846,7 +932,7 @@ public class AuditCollector {
         // 4. Spelling Issues
         html.append("<h2>4. ✍️ SPELLING & GRAMMAR ISSUES</h2>");
         boolean hasSpellingIssues = false;
-        for (String loc : LOCALES) {
+        for (String loc : locales) {
             Map<String, Object> locData = (Map<String, Object>) localeAudits.get(loc);
             if (locData != null) {
                 List<Map<String, Object>> spelling = (List<Map<String, Object>>) locData.get("spelling_issues");

@@ -74,6 +74,10 @@ mvn compile exec:java
 ### Запуск вручную из интерфейса GitHub:
 1. Откройте вкладку **Actions** в репозитории на GitHub.
 2. Выберите **Website QA Auditor** в левом меню.
-3. Нажмите **Run workflow** -> **Run workflow**.
+3. Нажмите **Run workflow**.
+4. В появившейся форме укажите параметры:
+   - **URL целевого сайта для аудита** (например: `https://example.com/` или `https://erythro.ai/`).
+   - **Список локалей** (например: `ru`, `en,ru` или `en,ru,he`).
+5. Нажмите зелёную кнопку **Run workflow**.
 
-После завершения воркфлоу отчеты `audit_data.json` и `audit-report.md` будут доступны для скачивания в артефактах запуска (**Artifacts**).
+После завершения воркфлоу отчеты `audit_data.json`, `audit-report.md` и `audit-report.pdf` будут доступны для скачивания в артефактах запуска (**Artifacts**).

@@ -2,6 +2,17 @@ name: Website QA Auditor
 
 on:
   workflow_dispatch:
+    inputs:
+      target_url:
+        description: 'URL целевого сайта для аудита'
+        required: true
+        default: 'https://erythro.ai/'
+        type: string
+      locales:
+        description: 'Список локалей через запятую (например: en,ru,he или ru)'
+        required: false
+        default: 'en,ru,he'
+        type: string
 
 jobs:
   audit:
@@ -26,6 +37,8 @@ jobs:
       - name: Run QA Audit Collector
         working-directory: QA_Auditor
         env:
+          TARGET_URL: ${{ inputs.target_url }}
+          LOCALES: ${{ inputs.locales }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PAGESPEED_API_KEY: ${{ secrets.PAGESPEED_API_KEY }}
         run: |
