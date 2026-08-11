@@ -34,6 +34,9 @@ jobs:
         run: |
           npx playwright install --with-deps
 
+      - name: Clean previous reports
+        run: rm -rf QA_Auditor/reports/*
+
       - name: Run QA Audit Collector
         working-directory: QA_Auditor
         env:

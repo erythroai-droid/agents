@@ -797,12 +797,9 @@ public class AuditCollector {
         String statusBadgeClass = "PASS".equals(overallStatus) ? "badge-pass" : "badge-warn";
 
         StringBuilder html = new StringBuilder();
-        html.append(String.format("""
-            <!DOCTYPE html>
-            <html lang="ru">
-            <head>
-            <meta charset="UTF-8">
-            <title>QA Audit Report: %s</title>
+        html.append("<!DOCTYPE html>\n<html lang=\"ru\">\n<head>\n<meta charset=\"UTF-8\">\n")
+            .append("<title>QA Audit Report: ").append(escapeHtml(targetUrl)).append("</title>\n")
+            .append("""
             <style>
                 body { font-family: 'Inter', system-ui, -apple-system, sans-serif; margin: 0; padding: 25px; color: #1e293b; background: #ffffff; line-height: 1.5; font-size: 13px; }
                 .header { border-bottom: 2px solid #3b82f6; padding-bottom: 12px; margin-bottom: 20px; }
@@ -829,8 +826,8 @@ public class AuditCollector {
             </head>
             <body>
             <div class="header">
-                <h1>📊 QA Audit Report: %s</h1>
-        """, escapeHtml(targetUrl), escapeHtml(targetUrl)));
+            """)
+            .append("<h1>📊 QA Audit Report: ").append(escapeHtml(targetUrl)).append("</h1>\n");
 
         html.append("<p class=\"meta\"><strong>Дата проверки:</strong> ")
             .append(escapeHtml(dateStr))
