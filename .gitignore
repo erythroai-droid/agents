@@ -4,3 +4,17 @@ node_modules/
 .idea/
 *.log
 .env
+
+# Generated audit artifacts. Deliverables (audit-report.pdf, audit-report.md,
+# audit_data.json) stay tracked; everything below is regenerable.
+QA_Auditor/reports/*.png
+QA_Auditor/reports/audit-report.html
+QA_Auditor/reports/audit_template_white.html
+QA_Auditor/reports/audit_template_white.pdf
+# Written only when the target PDF is locked by an open viewer
+QA_Auditor/reports/*.locked.pdf
+# Legacy duplicate/timestamped outputs from earlier runs
+QA_Auditor/reports/audit_report.*
+QA_Auditor/reports/audit-report-*.pdf
+QA_Auditor/reports/audit_report-*.pdf
+QA_Auditor/reports/audit_template_white-*.pdf

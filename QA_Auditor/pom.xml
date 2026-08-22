@@ -15,6 +15,7 @@
         <playwright.version>1.49.0</playwright.version>
         <languagetool.version>6.5</languagetool.version>
         <jackson.version>2.18.2</jackson.version>
+        <exec.mainClass>ai.erythro.AuditCollector</exec.mainClass>
     </properties>
 
     <dependencies>
@@ -68,7 +69,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.5.0</version>
                 <configuration>
-                    <mainClass>ai.erythro.AuditCollector</mainClass>
+                    <mainClass>${exec.mainClass}</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,41 +1,56 @@
-# 🤖 Erythro.ai Website QA Auditor Agent
+# 🤖 Erythro.ai Commercial Website QA & Lead-Closing Auditor
 
-Автоматизированный агент полного QA-аудита сайта [https://erythro.ai/](https://erythro.ai/) по 3 локалям (`en`, `ru`, `he` с поддержкой RTL-верстки).
+Автоматизированный B2B-аудитор веб-сайтов с генерацией коммерческого **Executive Scorecard**, расчетом потерь бизнеса, анализом мобильного UX/RTL, тестированием лид-форм, SEO, безопасности и продающим отчетом с Call-to-Action.
 
 ---
 
 ## ⚡ Ключевые возможности
 
-1. **Мультилокальная проверка**: Аудит `en`, `ru`, `he` с автоматическим переключением локалей.
-2. **Перехват Dev Console**: Автоматический отлов `console.error`, `console.warn` и неперехваченных падений JavaScript (`PageError / Uncaught Exceptions`).
-3. **Проверка скорости и метрик (Speed Test)**: Интеграция с Google PageSpeed Insights API v5 (оценки Performance, Accessibility, Best Practices, SEO и метрики Core Web Vitals FCP, LCP, CLS, TBT, Speed Index).
-4. **Проверка орфографии и грамматики**: Интеграция с LanguageTool (English, Русский) с поддержкой исключений из `config/audit_exceptions.json`.
-5. **Аудит доступности**: Встроенная проверка WCAG 2.1 AA через Axe-Core.
+1. **Executive Scorecard & Светофор конверсии**:
+   - Оценка сайта от 0 до 100 и грейд (A+, A, B, C, D, F).
+   - 5 шкал здоровья: Скорость & Мобильный UX, Лидогенерация и Формы, SEO & Маркетинг, Безопасность & Стабильность, **AI Visibility & Brand Discovery**.
+   - Автоматический расчет **Топ-3 уязвимостей конверсии** на языке денег и потерь рекламного бюджета.
+
+2. **Мобильная верстка и кросс-культурный аудит (RTL)**:
+   - Автоматическая проверка паразитного бокового скролла (`overflow-x`) на экранах смартфонов (iPhone SE / Android).
+   - Проверка RTL-зеркалирования (`he` / иврит), выравнивания заголовков и направления элементов.
+   - Соответствие закону о доступности сайтов (IS 5568 / WCAG 2.1 AA).
+
+3. **Тест форм захвата и сценариев лидогенерации (UX & LeadGen)**:
+   - Обнаружение всех форм захвата, полей Email/Phone и кнопок отправки.
+   - Проверка защиты от спама (Cloudflare Turnstile / reCAPTCHA / Honeypot).
+   - Маркер AI-автоматизации и мгновенного автоответа (мостик к продаже n8n / AI-агентов).
+
+4. **SEO & Маркетинговые превью**:
+   - Проверка OpenGraph (`og:image`, `og:title`) для WhatsApp, Telegram, LinkedIn.
+   - Проверка наличия `sitemap.xml`, `robots.txt`, `canonical`, фавиконок.
+
+5. **AI Visibility & Brand Discovery**:
+   - `llms.txt`, MCP manifest (`/.well-known/mcp`), JSON-LD Organization/FAQ, `/about`.
+   - Правила robots.txt для AI-ботов (GPTBot, ClaudeBot и др.), GA4 `dataLayer` + consent stub.
+
+6. **Безопасность и Инфраструктура**:
+   - HTTPS шифрование, HTTP Security Headers (HSTS, CSP, X-Frame-Options), замер TTFB.
+   - Перехват рантайм-сбоев JavaScript (`PageError`) и ошибок Dev Console.
+
+7. **Агентный просмотр ключевых страниц**:
+   - Сбор кандидатов из `sitemap.xml` и навигации, обход до 5 коммерчески важных URL.
+   - Проверка статуса, форм, CTA и soft-404; опциональный Gemini-вердикт по воронке (`GEMINI_API_KEY`).
+   - Лимит страниц: `AGENT_BROWSE_MAX_PAGES` (по умолчанию 5).
+
+8. **Умный орфографический фильтр**:
+   - Интеграция LanguageTool с расширенным словарем `config/audit_exceptions.json` без ложных срабатываний на IT/B2B термины (`n8n`, `AI-агенты`, `SLA`, `CRM` и др.).
 
 ---
 
-## 🛠 Предварительные требования
+## 🚀 Быстрый запуск
 
-- **Java JDK 17+**
-- **Apache Maven 3.8+**
-- **Git**
-
----
-
-## 🚀 Быстрый запуск из репозитория
-
-### 1. Клонирование репозитория
-```bash
-git clone https://github.com/erythroai-droid/agents.git
-cd agents/QA_Auditor
-```
-
-### 2. Установка браузерных зависимостей Playwright (при первом запуске)
+### 1. Установка браузеров Playwright (при первом запуске)
 ```bash
 mvn exec:java -Dexec.mainClass="com.microsoft.playwright.CLI" -Dexec.args="install"
 ```
 
-### 3. Запуск аудитора
+### 2. Запуск аудитора
 ```bash
 mvn compile exec:java
 ```
@@ -44,40 +59,7 @@ mvn compile exec:java
 
 ## 📊 Результаты проверки
 
-После завершения работы скрипта формируются два файла:
-
-1. **`reports/audit-report.pdf`** — визуально оформленный PDF-отчет для руководства и QA-команды.
-2. **`reports/audit-report.md`** — детальный человекочитаемый Markdown-отчет о статусе проверок.
-3. **`reports/audit_data.json`** — полный машиночитаемый JSON со всеми спарсенными SEO-метатегами, текстами, ошибками Dev Console, неперехваченными исключениями JS, данными PageSpeed Insights, результатами сканирования орфографии (LanguageTool) и проверками доступности WCAG (Axe-Core).
-
----
-
-## ⚙️ Структура проекта
-
-- `AGENTS.md` — Инструкция и спецификация QA-агента.
-- `src/main/java/ai/erythro/AuditCollector.java` — Главный класс логики сбора и анализа данных (Playwright, LanguageTool, Axe-Core, PageSpeed Insights API).
-- `config/audit_exceptions.json` — Реестр исключений и брендовых терминов (брендбук, техническая терминология).
-- `reports/` — Директория с генерируемыми отчетами.
-- `.github/workflows/audit.yml` — GitHub Actions Workflow для автоматического запуска аудита.
-
----
-
-## ⚡ Запуск через GitHub Actions
-
-В проект добавлен готовый workflow [`.github/workflows/audit.yml`](file:///.github/workflows/audit.yml).
-
-### Настройка секретов (API Key)
-1. Перейдите в ваш репозиторий GitHub: **Settings -> Secrets and variables -> Actions**.
-2. Нажмите **New repository secret**.
-3. Имя: `GEMINI_API_KEY` (или `PAGESPEED_API_KEY`), Значение: ваш ключ.
-
-### Запуск вручную из интерфейса GitHub:
-1. Откройте вкладку **Actions** в репозитории на GitHub.
-2. Выберите **Website QA Auditor** в левом меню.
-3. Нажмите **Run workflow**.
-4. В появившейся форме укажите параметры:
-   - **URL целевого сайта для аудита** (например: `https://example.com/` или `https://erythro.ai/`).
-   - **Список локалей** (например: `ru`, `en,ru` или `en,ru,he`).
-5. Нажмите зелёную кнопку **Run workflow**.
-
-После завершения воркфлоу отчеты `audit_data.json`, `audit-report.md` и `audit-report.pdf` будут доступны для скачивания в артефактах запуска (**Artifacts**).
+После завершения работы скрипта формируются файлы в папке `reports/`:
+- **`reports/audit-report.pdf`** — презентабельный B2B PDF-отчет для клиентов и ЛПР с Executive Scorecard и блоком записи на консультацию.
+- **`reports/audit-report.md`** — детальный структурированный Markdown-отчет.
+- **`reports/audit_data.json`** — полный машиночитаемый JSON со всеми метриками.

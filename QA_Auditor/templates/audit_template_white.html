@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Commercial QA &amp; AI Conversion Audit — Erythro.ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+    @page {
+        size: A4;
+        margin: 0;
+    }
+    * {
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    html {
+        font-size: calc(210mm / 595);
+        --sidebar-w: 176rem;
+        --header-h: 73rem;
+        --url-h: 22rem;
+        /* Exact rendered height of .footer; .sheet-foot reserves the same band in
+           flow, so both must change together or content will collide with it. */
+        --footer-h: 120rem;
+        /* Breathing room between the header band and the first block of a page.
+           Page 1 cancels it via a negative margin on .main. */
+        --inner-top-gap: 22rem;
+    }
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 210mm;
+        min-height: 297mm;
+        height: auto;
+        overflow: visible;
+        background: #f4f4f4;
+        color: #1e1e1e;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    @media screen {
+        html, body {
+            width: 100%;
+            min-height: 100%;
+            height: auto;
+            overflow: auto;
+            background: #2a2a2a;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 24px 0 48px;
+        }
+        .page {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+        }
+    }
+    .page {
+        --sidebar-w: 176rem;
+        --header-h: 73rem;
+        --url-h: 22rem;
+        --footer-h: 120rem;
+        --inner-top-gap: 22rem;
+        width: 595rem;
+        min-height: 840rem;
+        height: auto;
+        overflow: visible;
+        position: relative;
+        background: #f4f4f4;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    /* Repeating chrome: absolute inside .page (screen); switched to fixed in @media print */
+    .sheet-sidebar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: var(--sidebar-w);
+        height: auto;
+        background: #1e1e1e;
+        color: #ffffff;
+        z-index: 90;
+    }
+    .sheet-sidebar .brand {
+        position: absolute;
+        left: 19rem;
+        top: 15rem;
+        width: 138rem;
+        height: 43rem;
+    }
+    .brand svg { width: 138rem; height: 43rem; display: block; }
+    .sheet-url {
+        position: absolute;
+        left: 0;
+        top: var(--header-h);
+        width: var(--sidebar-w);
+        height: var(--url-h);
+        background: #e52421;
+        color: #ffffff;
+        font-size: 12rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    /* Absolute in .page (not in the fixed sidebar) → first page only */
+    .meta {
+        position: absolute;
+        left: 0;
+        top: 105rem;
+        width: var(--sidebar-w);
+        height: 9rem;
+        /* Padding keeps the line off the sidebar edges even for long locale lists */
+        padding: 0 10rem;
+        font-size: 7rem;
+        color: #ffffff;
+        font-weight: 400;
+        text-align: center;
+        line-height: 9rem;
+        white-space: nowrap;
+        z-index: 91;
+    }
+    .meta strong { font-weight: 700; }
+    /* Score gauge: absolute in .page → only on first printed page (not fixed) */
+    .gauge-wrap {
+        position: absolute;
+        left: 18rem;
+        top: 134rem;
+        width: 140rem;
+        height: 140rem;
+        z-index: 91;
+    }
+    .sheet-title {
+        position: absolute;
+        top: 0;
+        left: var(--sidebar-w);
+        width: 419rem;
+        height: var(--header-h);
+        background: #e52421;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        z-index: 95;
+    }
+    .sheet-title h1 {
+        margin: 0;
+        font-size: 20rem;
+        font-weight: 700;
+        letter-spacing: 4rem;
+        line-height: 24rem;
+        text-transform: uppercase;
+    }
+    .sheet-title-fill {
+        position: absolute;
+        top: var(--header-h);
+        left: var(--sidebar-w);
+        width: 419rem;
+        height: var(--url-h);
+        background: #f4f4f4;
+        z-index: 95;
+    }
+    .gauge-svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 140rem;
+        height: 140rem;
+        display: block;
+    }
+    .gauge-progress {
+        /* stroke-dasharray / dashoffset set only as SVG attributes (PDF-safe) */
+    }
+    .gauge-hole {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 140rem;
+        height: 140rem;
+        text-align: center;
+        pointer-events: none;
+    }
+    .gauge-score {
+        position: absolute;
+        top: 26rem;
+        left: 0;
+        right: 0;
+        font-size: 40rem;
+        font-weight: 700;
+        line-height: normal;
+        color: #ffffff;
+    }
+    .gauge-grade {
+        position: absolute;
+        top: 74rem;
+        left: 39rem;
+        width: 62rem;
+        height: 20rem;
+        background: #1e1e1e;
+        color: #ffe9c7;
+        font-size: 10rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 30rem;
+        border: none;
+        text-transform: uppercase;
+        line-height: normal;
+    }
+    .gauge-sub {
+        position: absolute;
+        top: 99rem;
+        left: 0;
+        right: 0;
+        font-size: 8rem;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: normal;
+    }
+    .section-rows {
+        position: relative;
+        left: 0;
+        width: 595rem;
+        margin-top: 16rem;
+        display: flex;
+        flex-direction: column;
+        gap: 16rem;
+        /* Must be above .sheet-sidebar (90) so .section-toc labels are visible */
+        z-index: 96;
+        padding-bottom: 20rem;
+    }
+    .section-row {
+        display: flex;
+        width: 595rem;
+        align-items: flex-start;
+        /* Keep a section whole: it moves to the next page instead of splitting,
+           which also keeps its sidebar label next to its content. */
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    .section-row .finding {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    /* Tall tables may span pages; keep rows intact */
+    .metrics tr,
+    .checks-table tr {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    .section-row + .section-row {
+        page-break-before: auto;
+        break-before: auto;
+    }
+    .section-toc {
+        width: 176rem;
+        flex-shrink: 0;
+        padding-left: 20rem;
+        padding-right: 5rem;
+        position: relative;
+        z-index: 96;
+    }
+    .toc-item {
+        display: flex;
+        gap: 9rem;
+        align-items: flex-start;
+        width: 151rem;
+    }
+    .toc-bar {
+        width: 2rem;
+        height: 44rem;
+        background: #e52421;
+        border-radius: 10rem;
+        flex-shrink: 0;
+        margin-top: 3rem;
+    }
+    .toc-text {
+        font-size: 11rem;
+        font-weight: 700;
+        line-height: 17rem;
+        text-transform: uppercase;
+        color: #ffffff;
+        width: 140rem;
+    }
+    .section-content {
+        width: 419rem;
+        flex-shrink: 0;
+    }
+    /* Layout table: thead/tfoot repeat on every printed page and reserve real flow
+       space for the header band and the footer, so content can never overlap them. */
+    .sheet {
+        width: 595rem;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+    .sheet-head,
+    .sheet-foot,
+    .sheet-body {
+        padding: 0;
+        margin: 0;
+        border: none;
+        vertical-align: top;
+    }
+    /* Matches the repeating chrome that every page carries: logo block + red URL
+       strip, plus a gap so inner pages do not start flush against the header.
+       The date/locales line is first-page-only, so it needs no clearance. */
+    .sheet-head { height: calc(var(--header-h) + var(--url-h) + var(--inner-top-gap)); }
+    .sheet-foot { height: var(--footer-h); }
+    .main {
+        position: relative;
+        /* Cancels --inner-top-gap on the first page only: the gauge and the chart keep
+           their approved position, while pages 2+ inherit the taller head spacer. */
+        margin-top: calc(-1 * var(--inner-top-gap));
+        margin-left: 176rem;
+        width: 419rem;
+        min-height: 245rem;
+        height: auto;
+        background: #ffffff;
+        z-index: 2;
+    }
+    .header { display: none; }
+    .header h1 { display: none; }
+    .content { position: relative; background-color: #F4F4F4; }
+    .chart {
+        position: relative;
+        width: 419rem;
+        height: 245rem;
+    }
+    .diag-title {
+        position: absolute;
+        left: 0;
+        top: 4rem;
+        width: 419rem;
+        height: 54rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20rem;
+        font-weight: 300;
+        letter-spacing: 3.2rem;
+        text-transform: uppercase;
+        color: #1e1e1e;
+    }
+    .diag-title span { color: #e52421; font-weight: 300; }
+    .ticks {
+        position: absolute;
+        left: 87rem;
+        width: 301rem;
+        display: flex;
+        justify-content: space-between;
+        font-size: 10rem;
+        font-weight: 400;
+        color: #bababa;
+        text-transform: uppercase;
+        line-height: 12rem;
+    }
+    .ticks-top { top: 58rem; }
+    .ticks-bottom { top: 215rem; }
+    .ticks span {
+        width: 0;
+        overflow: visible;
+        white-space: nowrap;
+        text-align: center;
+        transform: translateX(-50%);
+    }
+    .chart-grid {
+        position: absolute;
+        left: 87rem;
+        top: 73rem;
+        width: 301rem;
+        height: 120rem;
+        z-index: 0;
+        pointer-events: none;
+    }
+    .chart-grid svg {
+        display: block;
+        width: 301rem;
+        height: 120rem;
+    }
+    .chart-rows {
+        position: absolute;
+        left: 10rem;
+        top: 83rem;
+        width: 409rem;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10rem;
+    }
+    .chart-row {
+        display: flex;
+        align-items: center;
+        gap: 5rem;
+        height: 16rem;
+        min-height: 16rem;
+    }
+    .chart-label, .bar-track {
+        height: 16rem;
+        margin: 0;
+    }
+    .chart-label {
+        font-size: 7rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: right;
+        color: #000000;
+        line-height: 8rem;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        padding-right: 5rem;
+        width: 72rem;
+        flex-shrink: 0;
+        white-space: normal;
+    }
+    .bar-track {
+        width: 301rem;
+        flex-shrink: 0;
+        background: #ffffff;
+        border: 0;
+        border-radius: 0;
+        overflow: hidden;
+    }
+    .bar-fill { height: 100%; border: 0; border-radius: 0; }
+    .bar-green { background: #22bf16; }
+    .bar-warn { background: #e3c28f; }
+    .bar-bad { background: #e52421; }
+    .findings {
+        width: 417rem;
+        margin: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+    }
+    .finding {
+        display: flex;
+        width: 417rem;
+        min-height: 107rem;
+        background: #ffffff;
+        border-radius: 0;
+        overflow: hidden;
+        box-shadow: none;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    .finding-idx {
+        width: 60rem;
+        flex-shrink: 0;
+        color: #ffffff;
+        font-size: 20rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        line-height: 1;
+    }
+    .finding-body {
+        flex: 1;
+        padding: 7rem 10rem 7rem 8rem;
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        min-width: 0;
+        justify-content: flex-start;
+    }
+    .finding-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 8rem;
+    }
+    .ico { flex-shrink: 0; display: inline-flex; margin-top: 2rem; }
+    .ico svg { display: block; }
+    .ico-alert, .ico-alert svg { width: 12rem; height: 12rem; }
+    .ico-diagram, .ico-diagram svg { width: 8rem; height: 8rem; }
+    .ico-idea, .ico-idea svg { width: 9rem; height: 9rem; }
+    .finding-k {
+        font-size: 8rem;
+        font-weight: 700;
+        line-height: 12rem;
+        margin-right: 3rem;
+    }
+    .finding-k-red { color: #e52421; }
+    .finding-k-orange { color: #ff7900; }
+    .finding-k-green { color: #0da801; }
+    .finding-title {
+        font-size: 8rem;
+        font-weight: 700;
+        color: #000000;
+        line-height: 12rem;
+    }
+    .finding-p {
+        font-size: 8rem;
+        font-weight: 400;
+        line-height: 12rem;
+        color: #000000;
+        margin-top: 0;
+    }
+    .finding-p-inline {
+        display: inline;
+        font-weight: 400;
+    }
+    table.metrics {
+        width: 417rem;
+        max-width: 100%;
+        margin: 0 1rem;
+        border-collapse: collapse;
+        font-size: 6rem;
+        border: 1px solid #d8d8d8;
+        background: #ffffff;
+        table-layout: fixed;
+        box-sizing: border-box;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    table.metrics th {
+        background: #6b6254;
+        color: #ffffff;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 4rem 2rem;
+        font-size: 6rem;
+        line-height: 12rem;
+        vertical-align: middle;
+        border: 1px solid #ffffff;
+        box-sizing: border-box;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    table.metrics th:nth-child(1),
+    table.metrics td:nth-child(1) { width: 85rem; }
+    table.metrics th:nth-child(2),
+    table.metrics td:nth-child(2) { width: 63rem; }
+    table.metrics th:nth-child(3),
+    table.metrics td:nth-child(3) { width: 62rem; }
+    table.metrics th:nth-child(4),
+    table.metrics td:nth-child(4) { width: 67rem; }
+    table.metrics th:nth-child(5),
+    table.metrics td:nth-child(5) { width: 36rem; }
+    table.metrics th:nth-child(6),
+    table.metrics td:nth-child(6) { width: 30rem; }
+    table.metrics th:nth-child(7),
+    table.metrics td:nth-child(7) { width: 30rem; }
+    table.metrics th:nth-child(8),
+    table.metrics td:nth-child(8) { width: 40rem; }
+    table.metrics th:first-child,
+    table.metrics td.device {
+        text-align: left;
+        padding-left: 10rem;
+        padding-right: 4rem;
+    }
+    table.metrics td {
+        padding: 4rem 2rem;
+        vertical-align: middle;
+        text-align: center;
+        color: #1e1e1e;
+        background: #d8d8d8;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 6rem;
+        line-height: 12rem;
+        border: 1px solid #ffffff;
+        box-sizing: border-box;
+    }
+    td.device { font-weight: 700; }
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 14rem;
+        height: 14rem;
+        font-weight: 700;
+        font-size: 6rem;
+        padding: 0;
+        border-radius: 0;
+        line-height: 14rem;
+        box-sizing: border-box;
+    }
+    .badge-good { background: #9de989; color: #000000; border: 1px solid #64a847; }
+    .badge-warn { background: #fadabd; color: #000000; border: 1px solid #dda47f; }
+    .badge-bad { background: #ffbbbb; color: #000000; border: 1px solid #bf6d6d; }
+    
+    /* Section 3 Light Checks Table Styling (matches table.metrics) */
+    table.checks-table {
+        width: 417rem;
+        max-width: 100%;
+        margin: 0 1rem;
+        border-collapse: collapse;
+        font-size: 6rem;
+        border: 1px solid #d8d8d8;
+        background: #ffffff;
+        table-layout: fixed;
+        box-sizing: border-box;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    table.checks-table th {
+        background: #6b6254;
+        color: #ffffff;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: left;
+        padding: 4rem 6rem;
+        font-size: 6rem;
+        line-height: 12rem;
+        vertical-align: middle;
+        border: 1px solid #ffffff;
+        box-sizing: border-box;
+    }
+    table.checks-table td {
+        padding: 4rem 6rem;
+        background: #d8d8d8;
+        font-size: 6rem;
+        color: #1e1e1e;
+        line-height: 12rem;
+        vertical-align: middle;
+        border: 1px solid #ffffff;
+        box-sizing: border-box;
+    }
+    .check-param {
+        font-weight: 600;
+        color: #000000;
+        width: 175rem;
+    }
+    .check-result {
+        color: #4b5563;
+        width: 160rem;
+    }
+    .check-status {
+        width: 82rem;
+        text-align: center;
+    }
+    .status-badge {
+        display: inline-block;
+        width: 65rem;
+        height: 14rem;
+        font-size: 6rem;
+        font-weight: 700;
+        text-align: center;
+        white-space: nowrap;
+        line-height: 14rem;
+        text-transform: uppercase;
+    }
+    .status-good { background: #9de989; color: #000000; border: 1px solid #64a847; }
+    .status-warn { background: #fadabd; color: #000000; border: 1px solid #dda47f; }
+    .status-bad { background: #ffbbbb; color: #000000; border: 1px solid #bf6d6d; }
+    .footer {
+        /* Sits over the .sheet-foot spacer; switched to fixed in @media print */
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 595rem;
+        min-height: var(--footer-h);
+        height: auto;
+        background: #e52421;
+        color: #ffffff;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 12rem 0 8rem;
+        text-align: center;
+        margin-top: 0;
+        box-sizing: border-box;
+    }
+    .cta-title {
+        font-size: 12rem;
+        font-weight: 700;
+        line-height: 18rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8rem;
+        height: 34rem;
+    }
+    .cta-title svg { width: 87rem; height: 19rem; display: block; }
+    .cta-sub {
+        font-size: 8rem;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 12rem;
+        padding: 0 30px;
+        width: 595rem;
+    }
+    .cta-buttons {
+        display: flex;
+        gap: 10rem;
+        justify-content: center;
+        margin-top: 4rem;
+    }
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 99rem;
+        height: 20rem;
+        border-radius: 20rem;
+        font-size: 6rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: #ffffff;
+        border: 1px solid #ffffff;
+        background: transparent;
+        line-height: 18rem;
+    }
+    .copy {
+        font-size: 8rem;
+        color: #ffffff;
+        font-weight: 400;
+        line-height: 12rem;
+        padding: 0 30px;
+        margin-top: 6rem;
+    }
+
+    /* ==========================================================
+       PRINT / PDF OVERRIDES — must stay last in the stylesheet
+       so they win over the screen-oriented base rules above.
+       Chrome (sidebar, header band, footer) becomes `fixed` so
+       Chromium repeats it on every printed page.
+       ========================================================== */
+    @media print {
+        html, body { background: #f4f4f4; }
+        .page { min-height: 297mm; }
+
+        /* Full-bleed black column repeated on every page.
+           .sheet-sidebar itself goes transparent and only carries content. */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: var(--sidebar-w);
+            background: #1e1e1e;
+            z-index: 89;
+        }
+        .sheet-sidebar {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            height: auto;
+            background: transparent;
+        }
+        .sheet-title,
+        .sheet-title-fill { position: fixed; }
+        .footer {
+            position: fixed;
+            bottom: 0;
+        }
+
+        /* Gauge stays absolute → prints on the first page only */
+        .gauge-wrap { position: absolute; }
+    }
+</style>
+</head>
+<body>
+<div class="page">
+    <aside class="sheet-sidebar">
+        <div class="brand"><svg width="138" height="43" viewBox="0 0 138 43" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.6567 22.572V6.35889H24.8201V9.23582H24.8885C25.2026 8.20068 25.6671 7.43441 26.3227 6.96385C26.9647 6.49335 27.8253 6.26475 28.8771 6.26475C29.9289 6.26475 29.4099 6.26481 29.6557 6.27823C29.9016 6.27823 30.1202 6.30514 30.3388 6.31856V10.6878C30.1339 10.6743 29.8197 10.6474 29.4099 10.6205C29.0001 10.6071 28.604 10.5937 28.2351 10.5937C27.5931 10.5937 27.033 10.7415 26.5413 11.0239C26.0495 11.3062 25.6671 11.7095 25.3938 12.2338C25.1207 12.7581 24.9841 13.39 24.9841 14.1428V22.572H19.6567Z" fill="white"/>
+<path d="M33.4805 28.8234L33.7401 24.8171L35.6525 24.8575C36.0896 24.8843 36.4311 24.8575 36.718 24.7634C36.9911 24.6693 37.2097 24.4945 37.3737 24.2525C37.5376 24.0105 37.6605 23.6878 37.7561 23.2846L37.9747 22.5586L31.6774 6.35889H37.2507L39.6958 13.9411C40.01 14.9763 40.3105 16.0115 40.5837 17.0601C40.8569 18.1087 41.1301 19.1707 41.4033 20.2463H39.9827C40.2559 19.1707 40.5291 18.0953 40.8023 17.0467C41.0891 15.998 41.3896 14.9629 41.7312 13.9411L44.2446 6.35889H49.7632L42.701 24.723C42.3458 25.6775 41.9087 26.4573 41.4033 27.0891C40.8979 27.721 40.2832 28.1781 39.5729 28.4873C38.8626 28.7965 38.002 28.9443 37.0048 28.9443C36.0076 28.9443 35.8027 28.9443 35.2017 28.9174C34.587 28.8906 34.0133 28.8637 33.4805 28.8234Z" fill="white"/>
+<path d="M62.2891 6.35889V10.3786H51.0199V6.35889H62.2891ZM53.6836 2.07034H59.0112V17.2349C59.0112 17.7323 59.1204 18.0818 59.3253 18.2701C59.5303 18.4717 59.9261 18.5658 60.4863 18.5658C61.0465 18.5658 61.0465 18.5658 61.4288 18.5658C61.8111 18.5658 62.0841 18.5658 62.2486 18.5389L62.3983 22.5183C62.0436 22.5586 61.5926 22.5855 61.0324 22.5989C60.4728 22.6124 59.8991 22.6258 59.3253 22.6258C57.3991 22.6258 55.9921 22.2494 55.0632 21.4965C54.148 20.7437 53.6836 19.5875 53.6836 18.0146V2.07034Z" fill="white"/>
+<path d="M70.2532 13.6723V22.5855H64.9258V0H70.2256V10.6474H69.488C69.9801 9.2493 70.6901 8.13345 71.6326 7.29995C72.5751 6.46644 73.8183 6.03621 75.3621 6.03621C76.9054 6.03621 77.5748 6.29166 78.4081 6.78906C79.2549 7.29995 79.8967 8.01247 80.3612 8.96695C80.8122 9.90801 81.0442 11.0373 81.0442 12.3548V22.572H75.7168V13.4169C75.7168 12.4623 75.4848 11.7364 75.0203 11.239C74.5558 10.7281 73.9005 10.4861 73.0396 10.4861C72.1793 10.4861 71.9879 10.6071 71.5645 10.8357C71.1411 11.0642 70.8269 11.4137 70.5944 11.8843C70.3624 12.3548 70.2532 12.9463 70.2532 13.6588V13.6723Z" fill="white"/>
+<path d="M84.4319 22.572V6.35889H89.5955V9.23582H89.6501C89.9642 8.20068 90.4287 7.43441 91.0847 6.96385C91.7265 6.49335 92.5868 6.26475 93.6391 6.26475C94.6909 6.26475 94.1718 6.26481 94.4172 6.27823C94.6633 6.27823 94.8817 6.30514 95.1008 6.31856V10.6878C94.8958 10.6743 94.5817 10.6474 94.1718 10.6205C93.7619 10.6071 93.3655 10.5937 92.9967 10.5937C92.3549 10.5937 91.7946 10.7415 91.3031 11.0239C90.811 11.3062 90.4287 11.7095 90.1557 12.2338C89.8826 12.7581 89.7458 13.39 89.7458 14.1428V22.572H84.4184H84.4319Z" fill="white"/>
+<path d="M105.017 22.9216C103.296 22.9216 101.78 22.572 100.496 21.8729C99.212 21.1739 98.2149 20.1925 97.5049 18.9288C96.7944 17.665 96.4391 16.1862 96.4391 14.4789C96.4391 12.7715 96.7944 11.3062 97.5049 10.0425C98.2149 8.77874 99.212 7.79735 100.496 7.08483C101.78 6.37231 103.296 6.02279 105.017 6.02279C106.739 6.02279 108.241 6.37231 109.526 7.08483C110.809 7.79735 111.806 8.77874 112.517 10.0425C113.228 11.3062 113.582 12.785 113.582 14.4789C113.582 16.1728 113.228 17.665 112.517 18.9288C111.806 20.1925 110.809 21.1739 109.526 21.8729C108.241 22.572 106.739 22.9216 105.017 22.9216ZM105.017 18.8078C105.646 18.8078 106.192 18.633 106.67 18.2969C107.148 17.9474 107.517 17.4634 107.79 16.8181C108.064 16.1728 108.187 15.3931 108.187 14.5058C108.187 13.6185 108.05 12.8118 107.79 12.1666C107.517 11.5347 107.148 11.0373 106.67 10.7012C106.192 10.3517 105.646 10.1904 105.017 10.1904C104.389 10.1904 103.815 10.3651 103.337 10.7012C102.859 11.0373 102.477 11.5347 102.217 12.1666C101.958 12.8118 101.821 13.5916 101.821 14.5058C101.821 15.42 101.958 16.1862 102.217 16.8315C102.477 17.4768 102.846 17.9608 103.337 18.3103C103.815 18.6599 104.376 18.8212 105.017 18.8212V18.8078Z" fill="white"/>
+<path d="M8.7465 19.0102C6.96178 18.6316 5.62664 17.7119 5.34054 15.8592H16.8527C16.9617 15.237 17.0298 14.3986 17.0298 13.6818C17.0298 8.44799 13.9644 5.81081 8.78737 5.81081C8.77375 5.81081 8.7465 5.81081 8.73287 5.81081V9.31351C8.78737 9.31351 8.84187 9.31351 8.89636 9.31351C10.9944 9.31351 12.0707 10.3819 12.1388 12.5052H8.73287H5.32692H0.190734C0.0681192 13.1679 0 13.8846 0 14.6555C0 20.2139 3.46045 22.9052 8.7465 23.2432V19.0238V19.0102Z" fill="#E52421"/>
+<path d="M134.315 5.81081H121.132C120.07 5.81081 119.208 6.66308 119.208 7.71449V20.7585C119.208 21.8099 120.07 22.6622 121.132 22.6622H134.315C135.377 22.6622 136.238 21.8099 136.238 20.7585V7.71449C136.238 6.66308 135.377 5.81081 134.315 5.81081Z" fill="#E52421"/>
+<path d="M124.756 18.875C124.292 18.875 123.882 18.8078 123.527 18.6599C123.172 18.512 122.899 18.2835 122.694 17.9877C122.489 17.6919 122.393 17.3155 122.393 16.8584C122.393 16.4014 122.461 16.1593 122.598 15.8905C122.735 15.6216 122.926 15.4065 123.158 15.2318C123.39 15.057 123.677 14.936 124.005 14.8419C124.333 14.7478 124.674 14.694 125.043 14.6671C125.453 14.6402 125.767 14.5999 126.013 14.5596C126.259 14.5192 126.436 14.452 126.546 14.3714C126.655 14.2907 126.71 14.1966 126.71 14.0622V14.0353C126.71 13.9277 126.682 13.847 126.614 13.7664C126.546 13.6857 126.464 13.6319 126.341 13.5916C126.218 13.5513 126.081 13.5244 125.917 13.5244C125.753 13.5244 125.603 13.5513 125.48 13.5916C125.357 13.6319 125.248 13.7126 125.179 13.8067C125.111 13.9008 125.057 14.0084 125.029 14.1562L122.653 14.1025C122.707 13.6185 122.858 13.1883 123.117 12.8388C123.377 12.4892 123.759 12.2204 124.237 12.0322C124.715 11.8439 125.316 11.7498 126.013 11.7498C126.71 11.7498 127.01 11.8036 127.42 11.9111C127.83 12.0187 128.171 12.18 128.458 12.3817C128.745 12.5833 128.95 12.8388C129.1 13.1345C129.25 13.4303 129.319 13.7664 129.319 14.1428V18.7675H126.791V17.7995H126.764C126.614 18.0684 126.436 18.2835 126.245 18.4448C126.054 18.6061 125.822 18.7137 125.576 18.7809C125.33 18.8481 125.057 18.8884 124.756 18.8884V18.875ZM125.617 17.2618C125.808 17.2618 125.986 17.2214 126.163 17.1542C126.341 17.087 126.477 16.9794 126.601 16.8315C126.723 16.6837 126.764 16.5223 126.764 16.3072V15.7561C126.696 15.7829 126.628 15.8098 126.559 15.8232C126.491 15.8367 126.409 15.8636 126.327 15.8905C126.245 15.9174 126.15 15.9308 126.054 15.9443C125.958 15.9577 125.849 15.9846 125.726 16.0115C125.548 16.0384 125.384 16.0922 125.262 16.1459C125.139 16.1997 125.029 16.2804 124.961 16.3745C124.893 16.4686 124.865 16.5761 124.865 16.6837C124.865 16.7912 124.893 16.9122 124.961 16.9928C125.029 17.0736 125.111 17.1407 125.234 17.1945C125.357 17.2483 125.48 17.2618 125.63 17.2618H125.617Z" fill="white"/>
+<path d="M131.927 11.36C131.532 11.36 131.204 11.239 130.944 11.0104C130.685 10.7819 130.562 10.4861 130.562 10.1366C130.562 9.78703 130.685 9.49126 130.944 9.26272C131.204 9.03418 131.532 8.9132 131.927 8.9132C132.324 8.9132 132.651 9.03418 132.911 9.26272C133.171 9.49126 133.294 9.78703 133.294 10.1366C133.294 10.4861 133.171 10.7819 132.911 11.0104C132.651 11.239 132.324 11.36 131.927 11.36ZM130.63 18.754V11.8843H133.239V18.754H130.63Z" fill="white"/>
+</svg></div>
+        <div class="sheet-url">www.example.com</div>
+    </aside>
+    <!-- Outside the fixed sidebar on purpose: absolute in .page means it prints on
+         the first page only, like the gauge. Inner pages keep just logo + URL. -->
+    <div class="meta">Дата <strong>20.08.2026</strong>  |  Локали: <strong>EN, RU, HE</strong></div>
+    <div class="gauge-wrap" style="--p: 85;">
+            <svg class="gauge-svg" viewBox="0 0 140 140" aria-hidden="true">
+                <circle cx="70" cy="70" r="70" fill="#E52421"/>
+                <circle cx="70" cy="70" r="58" fill="none" stroke="#1E1E1E" stroke-width="5"/>
+                <path class="gauge-progress" d="M 70 12 A 58 58 0 1 1 70 128 A 58 58 0 1 1 70 12" pathLength="100" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="butt" stroke-dasharray="85 100"/>
+            </svg>
+            <div class="gauge-hole">
+                <div class="gauge-score">85</div>
+                <div class="gauge-grade">GRADE:A</div>
+                <div class="gauge-sub">из 100 баллов</div>
+            </div>
+        </div>
+    <div class="sheet-title">
+        <h1>COMMERCIAL QA &amp;<br>AI CONVERSION AUDIT</h1>
+    </div>
+    <div class="sheet-title-fill"></div>
+    <!-- thead/tfoot are transparent spacers: Chromium repeats them on every printed
+         page, reserving real flow space so content can never slide under the fixed
+         header band or the fixed footer. -->
+    <table class="sheet">
+        <thead><tr><td class="sheet-head"></td></tr></thead>
+        <tfoot><tr><td class="sheet-foot"></td></tr></tfoot>
+        <tbody><tr><td class="sheet-body">
+    <div class="main">
+        <div class="content">
+            <div class="chart">
+                <div class="diag-title"><span>д</span>иагностика</div>
+                <div class="ticks ticks-top"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span><span>90</span><span>100</span></div>
+                <div class="chart-grid" aria-hidden="true"><svg    width="301" height="114" viewBox="0 0 301 114" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 1">
+<line id="Line 1" x1="0.500009" y1="2.18557e-08" x2="0.500004" y2="114" stroke="#E8E8E8"/>
+<line id="Line 2" x1="30.5" y1="2.18557e-08" x2="30.5" y2="114" stroke="#E8E8E8"/>
+<line id="Line 3" x1="60.5" y1="2.18557e-08" x2="60.5" y2="114" stroke="#E8E8E8"/>
+<line id="Line 4" x1="90.5" y1="2.18557e-08" x2="90.5" y2="114" stroke="#E8E8E8"/>
+<line id="Line 5" x1="120.5" y1="2.18557e-08" x2="120.5" y2="114" stroke="#E8E8E8"/>
+<line id="Line 6" x1="150.5" y1="2.18557e-08" x2="150.5" y2="114" stroke="#E8E8E8"/>
+<line id="Line 7" x1="180.5" y1="2.18557e-08" x2="180.5" y2="114" stroke="#E8E8E8"/>
+<line id="Line 8" x1="210.5" y1="2.18557e-08" x2="210.5" y2="114" stroke="#E8E8E8"/>
+<line id="Line 9" x1="240.5" y1="2.18557e-08" x2="240.5" y2="114" stroke="#E8E8E8"/>
+<line id="Line 10" x1="270.5" y1="2.18557e-08" x2="270.5" y2="114" stroke="#E8E8E8"/>
+<line id="Line 11" x1="300.5" y1="2.18557e-08" x2="300.5" y2="114" stroke="#E8E8E8"/>
+</g>
+</svg>
+</div>
+                <div class="chart-rows"><div class="chart-row"><div class="chart-label">скорость и<br>мобильный UX</div><div class="bar-track"><div class="bar-fill bar-green" style="width:80%;"></div></div></div><div class="chart-row"><div class="chart-label">Seo и видимость</div><div class="bar-track"><div class="bar-fill bar-green" style="width:94%;"></div></div></div><div class="chart-row"><div class="chart-label">лидогенерация и формы</div><div class="bar-track"><div class="bar-fill bar-warn" style="width:70%;"></div></div></div><div class="chart-row"><div class="chart-label">безопасность и стабильность</div><div class="bar-track"><div class="bar-fill bar-bad" style="width:40%;"></div></div></div><div class="chart-row"><div class="chart-label">AI visibility &amp;<br>brand discovery</div><div class="bar-track"><div class="bar-fill bar-green" style="width:88%;"></div></div></div></div>
+                <div class="ticks ticks-bottom"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span><span>90</span><span>100</span></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section-rows">
+        <!-- SECTION 1: TOP 3 VULNERABILITIES -->
+        <div class="section-row">
+            <div class="section-toc">
+                <div class="toc-item">
+                    <div class="toc-bar"></div>
+                    <div class="toc-text">топ-3 уязвимости конверсии &amp; упущенная выгода</div>
+                </div>
+            </div>
+            <div class="section-content">
+                <div class="findings">
+                    <article class="finding"><div class="finding-idx" style="background:#6b6254;">01</div><div class="finding-body"><div class="finding-row"><span class="ico ico-alert"><svg    width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="ri:alert-fill">
+<path id="Vector" d="M6.43299 1.50001L11.196 9.75001C11.2399 9.82602 11.263 9.91224 11.263 10C11.263 10.0878 11.2399 10.174 11.196 10.25C11.1521 10.326 11.089 10.3891 11.013 10.433C10.937 10.4769 10.8508 10.5 10.763 10.5H1.23699C1.14922 10.5 1.063 10.4769 0.986991 10.433C0.910983 10.3891 0.847866 10.326 0.803984 10.25C0.760101 10.174 0.736999 10.0878 0.737 10C0.737 9.91224 0.760103 9.82602 0.803987 9.75001L5.56699 1.50001C5.61087 1.424 5.67399 1.36089 5.75 1.31701C5.826 1.27313 5.91222 1.25003 5.99999 1.25003C6.08775 1.25003 6.17397 1.27313 6.24998 1.31701C6.32598 1.36089 6.3891 1.424 6.43299 1.50001ZM5.49999 8.00001V9.00001H6.49999V8.00001H5.49999ZM5.49999 4.50001V7.00001H6.49999V4.50001H5.49999Z" fill="#E52421"/>
+</g>
+</svg>
+</span><div><span class="finding-k finding-k-red">Проблема:</span> <span class="finding-title">Потеря 25–40% мобильного рекламного трафика</span><div class="finding-p">Высокое время загрузки Largest Contentful Paint (LCP &gt; 4.0s) на мобильных сетях 4G.</div></div></div><div class="finding-row"><span class="ico ico-diagram"><svg    width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="diagram">
+<rect id="Rectangle 15" x="9.61651e-08" width="8" height="8" fill="#FF7900"/>
+<line id="Line 12" x1="2.5" x2="2.5" y2="8" stroke="#CA621C"/>
+<line id="Line 14" x1="8" y1="2.5" x2="4.80825e-08" y2="2.5" stroke="#CA621C"/>
+<line id="Line 15" x1="8" y1="5.5" x2="4.80825e-08" y2="5.5" stroke="#CA621C"/>
+<line id="Line 13" x1="5.5" x2="5.5" y2="8" stroke="#CA621C"/>
+<path id="Vector" d="M6.68987 6.05111C6.77816 6.2201 6.70989 6.42516 6.53733 6.50918C6.36477 6.59321 6.15331 6.52435 6.06501 6.35536L4.99625 4.30999C4.91221 4.14913 4.857 4.04385 4.80956 3.96649C4.76321 3.89078 4.73904 3.86702 4.72769 3.85779C4.64137 3.78758 4.52635 3.76125 4.41796 3.78688C4.40372 3.79026 4.37158 3.80113 4.2967 3.84908C4.22021 3.89813 4.1245 3.96886 3.97847 4.07705L3.96936 4.08385C3.83497 4.18343 3.72039 4.26838 3.62168 4.33166C3.51911 4.39739 3.40971 4.4559 3.28296 4.48588C2.95783 4.5628 2.61274 4.48384 2.35378 4.27325C2.25285 4.19114 2.17998 4.0909 2.11641 3.98716C2.05528 3.8873 1.9893 3.76103 1.91192 3.61298L0.837825 1.55749C0.74953 1.38852 0.817825 1.18342 0.990369 1.0994C1.16291 1.01538 1.37437 1.08424 1.46267 1.25322L2.53151 3.29862C2.61557 3.45953 2.67075 3.56475 2.71818 3.64217C2.76453 3.71787 2.78876 3.7416 2.80006 3.75081C2.88639 3.82103 3.00145 3.84737 3.10979 3.82172C3.12403 3.81835 3.15622 3.80748 3.23105 3.75953C3.30754 3.71048 3.40324 3.63979 3.54928 3.53156L3.55838 3.5248C3.69278 3.42518 3.80736 3.34023 3.90607 3.27698C4.00864 3.21123 4.11804 3.15271 4.24479 3.12273C4.56992 3.04581 4.91506 3.12479 5.174 3.33539C5.27491 3.41748 5.34781 3.51771 5.41136 3.62149C5.47248 3.72131 5.53847 3.84758 5.61582 3.99568L6.68987 6.05111Z" fill="white"/>
+</g>
+</svg>
+</span><div><span class="finding-k finding-k-orange">Потери бизнеса:</span> <span class="finding-p finding-p-inline">Пользователи закрывают сайт до первого экрана, сжигая бюджет Google / Meta Ads.</span></div></div><div class="finding-row"><span class="ico ico-idea"><svg    width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flat-color-icons:idea" clip-path="url(#clip-idea)">
+<path id="Vector" d="M4.5 7.875C6.57107 7.875 8.25 6.19607 8.25 4.125C8.25 2.05393 6.57107 0.375 4.5 0.375C2.42893 0.375 0.75 2.05393 0.75 4.125C0.75 6.19607 2.42893 7.875 4.5 7.875Z" fill="#FFF59D"/>
+<path id="Vector_2" d="M6.9375 4.125C6.9375 2.68125 5.7 1.5375 4.21875 1.70625C3.09375 1.8375 2.19375 2.7375 2.08125 3.8625C1.9875 4.725 2.34375 5.49375 2.94375 5.98125C3.20625 6.20625 3.375 6.525 3.375 6.88125V6.9375H5.625V6.91875C5.625 6.58125 5.775 6.24375 6.0375 6.01875C6.58125 5.56875 6.9375 4.89375 6.9375 4.125Z" fill="#FBC02D"/>
+<path id="Vector_3" d="M5.7375 3.7875L5.175 3.4125C5.11875 3.375 5.025 3.375 4.96875 3.4125L4.5 3.7125L4.05 3.4125C3.99375 3.375 3.9 3.375 3.84375 3.4125L3.28125 3.7875C3.24375 3.825 3.20625 3.8625 3.20625 3.91875C3.20625 3.975 3.20625 4.03125 3.24375 4.06875L3.95625 4.95V6.9375H4.33125V4.875C4.33125 4.8375 4.3125 4.8 4.29375 4.7625L3.675 3.99375L3.95625 4.10625C4.4625 4.14375 4.55625 4.14375 4.6125 4.10625L5.0625 3.80625L5.34375 3.99375L4.725 4.7625C4.70625 4.8 4.6875 4.8375 4.6875 4.875V6.9375H5.0625V4.95L5.775 4.06875C5.8125 4.03125 5.83125 3.975 5.8125 3.91875C5.79375 3.8625 5.775 3.80625 5.7375 3.7875Z" fill="#FFF59D"/>
+<path id="Vector_4" d="M4.5 8.8125C4.81066 8.8125 5.0625 8.56066 5.0625 8.25C5.0625 7.93934 4.81066 7.6875 4.5 7.6875C4.18934 7.6875 3.9375 7.93934 3.9375 8.25C3.9375 8.56066 4.18934 8.8125 4.5 8.8125Z" fill="#5C6BC0"/>
+<path id="Vector_5" d="M4.875 8.4375H4.125C3.7125 8.4375 3.375 8.1 3.375 7.6875V6.75H5.625V7.6875C5.625 8.1 5.2875 8.4375 4.875 8.4375Z" fill="#9FA8DA"/>
+<path id="Vector_6" d="M5.625 7.6875L3.45 7.9875C3.50625 8.11875 3.61875 8.25 3.75 8.325L5.5125 8.08125C5.5875 7.96875 5.625 7.8375 5.625 7.6875ZM3.375 7.25625V7.63125L5.625 7.3125V6.9375L3.375 7.25625Z" fill="#5C6BC0"/>
+</g>
+<defs>
+<clipPath id="clip-idea">
+<rect width="9" height="9" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+</span><div><span class="finding-k finding-k-green">Решение от Erythro.ai:</span> <span class="finding-p finding-p-inline">Мобильная оптимизация Core Web Vitals, сжатие Next-Gen WebP/AVIF и кэширование CDN до LCP &lt; 1.5s.</span></div></div></div></article><article class="finding"><div class="finding-idx" style="background:#8c806d;">02</div><div class="finding-body"><div class="finding-row"><span class="ico ico-alert"><svg    width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="ri:alert-fill">
+<path id="Vector" d="M6.43299 1.50001L11.196 9.75001C11.2399 9.82602 11.263 9.91224 11.263 10C11.263 10.0878 11.2399 10.174 11.196 10.25C11.1521 10.326 11.089 10.3891 11.013 10.433C10.937 10.4769 10.8508 10.5 10.763 10.5H1.23699C1.14922 10.5 1.063 10.4769 0.986991 10.433C0.910983 10.3891 0.847866 10.326 0.803984 10.25C0.760101 10.174 0.736999 10.0878 0.737 10C0.737 9.91224 0.760103 9.82602 0.803987 9.75001L5.56699 1.50001C5.61087 1.424 5.67399 1.36089 5.75 1.31701C5.826 1.27313 5.91222 1.25003 5.99999 1.25003C6.08775 1.25003 6.17397 1.27313 6.24998 1.31701C6.32598 1.36089 6.3891 1.424 6.43299 1.50001ZM5.49999 8.00001V9.00001H6.49999V8.00001H5.49999ZM5.49999 4.50001V7.00001H6.49999V4.50001H5.49999Z" fill="#E52421"/>
+</g>
+</svg>
+</span><div><span class="finding-k finding-k-red">Проблема:</span> <span class="finding-title">Риск срыва лидогенерации и зависания входящих заявок</span><div class="finding-p">Лид-формы не оснащены невидимой защитой Turnstile и мгновенным AI-автоответчиком.</div></div></div><div class="finding-row"><span class="ico ico-diagram"><svg    width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="diagram">
+<rect id="Rectangle 15" x="9.61651e-08" width="8" height="8" fill="#FF7900"/>
+<line id="Line 12" x1="2.5" x2="2.5" y2="8" stroke="#CA621C"/>
+<line id="Line 14" x1="8" y1="2.5" x2="4.80825e-08" y2="2.5" stroke="#CA621C"/>
+<line id="Line 15" x1="8" y1="5.5" x2="4.80825e-08" y2="5.5" stroke="#CA621C"/>
+<line id="Line 13" x1="5.5" x2="5.5" y2="8" stroke="#CA621C"/>
+<path id="Vector" d="M6.68987 6.05111C6.77816 6.2201 6.70989 6.42516 6.53733 6.50918C6.36477 6.59321 6.15331 6.52435 6.06501 6.35536L4.99625 4.30999C4.91221 4.14913 4.857 4.04385 4.80956 3.96649C4.76321 3.89078 4.73904 3.86702 4.72769 3.85779C4.64137 3.78758 4.52635 3.76125 4.41796 3.78688C4.40372 3.79026 4.37158 3.80113 4.2967 3.84908C4.22021 3.89813 4.1245 3.96886 3.97847 4.07705L3.96936 4.08385C3.83497 4.18343 3.72039 4.26838 3.62168 4.33166C3.51911 4.39739 3.40971 4.4559 3.28296 4.48588C2.95783 4.5628 2.61274 4.48384 2.35378 4.27325C2.25285 4.19114 2.17998 4.0909 2.11641 3.98716C2.05528 3.8873 1.9893 3.76103 1.91192 3.61298L0.837825 1.55749C0.74953 1.38852 0.817825 1.18342 0.990369 1.0994C1.16291 1.01538 1.37437 1.08424 1.46267 1.25322L2.53151 3.29862C2.61557 3.45953 2.67075 3.56475 2.71818 3.64217C2.76453 3.71787 2.78876 3.7416 2.80006 3.75081C2.88639 3.82103 3.00145 3.84737 3.10979 3.82172C3.12403 3.81835 3.15622 3.80748 3.23105 3.75953C3.30754 3.71048 3.40324 3.63979 3.54928 3.53156L3.55838 3.5248C3.69278 3.42518 3.80736 3.34023 3.90607 3.27698C4.00864 3.21123 4.11804 3.15271 4.24479 3.12273C4.56992 3.04581 4.91506 3.12479 5.174 3.33539C5.27491 3.41748 5.34781 3.51771 5.41136 3.62149C5.47248 3.72131 5.53847 3.84758 5.61582 3.99568L6.68987 6.05111Z" fill="white"/>
+</g>
+</svg>
+</span><div><span class="finding-k finding-k-orange">Потери бизнеса:</span> <span class="finding-p finding-p-inline">Риск утери «горячих» заявок из-за спам-ботов или долгой ручной обработки свыше 15 минут.</span></div></div><div class="finding-row"><span class="ico ico-idea"><svg    width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flat-color-icons:idea" clip-path="url(#clip-idea)">
+<path id="Vector" d="M4.5 7.875C6.57107 7.875 8.25 6.19607 8.25 4.125C8.25 2.05393 6.57107 0.375 4.5 0.375C2.42893 0.375 0.75 2.05393 0.75 4.125C0.75 6.19607 2.42893 7.875 4.5 7.875Z" fill="#FFF59D"/>
+<path id="Vector_2" d="M6.9375 4.125C6.9375 2.68125 5.7 1.5375 4.21875 1.70625C3.09375 1.8375 2.19375 2.7375 2.08125 3.8625C1.9875 4.725 2.34375 5.49375 2.94375 5.98125C3.20625 6.20625 3.375 6.525 3.375 6.88125V6.9375H5.625V6.91875C5.625 6.58125 5.775 6.24375 6.0375 6.01875C6.58125 5.56875 6.9375 4.89375 6.9375 4.125Z" fill="#FBC02D"/>
+<path id="Vector_3" d="M5.7375 3.7875L5.175 3.4125C5.11875 3.375 5.025 3.375 4.96875 3.4125L4.5 3.7125L4.05 3.4125C3.99375 3.375 3.9 3.375 3.84375 3.4125L3.28125 3.7875C3.24375 3.825 3.20625 3.8625 3.20625 3.91875C3.20625 3.975 3.20625 4.03125 3.24375 4.06875L3.95625 4.95V6.9375H4.33125V4.875C4.33125 4.8375 4.3125 4.8 4.29375 4.7625L3.675 3.99375L3.95625 4.10625C4.4625 4.14375 4.55625 4.14375 4.6125 4.10625L5.0625 3.80625L5.34375 3.99375L4.725 4.7625C4.70625 4.8 4.6875 4.8375 4.6875 4.875V6.9375H5.0625V4.95L5.775 4.06875C5.8125 4.03125 5.83125 3.975 5.8125 3.91875C5.79375 3.8625 5.775 3.80625 5.7375 3.7875Z" fill="#FFF59D"/>
+<path id="Vector_4" d="M4.5 8.8125C4.81066 8.8125 5.0625 8.56066 5.0625 8.25C5.0625 7.93934 4.81066 7.6875 4.5 7.6875C4.18934 7.6875 3.9375 7.93934 3.9375 8.25C3.9375 8.56066 4.18934 8.8125 4.5 8.8125Z" fill="#5C6BC0"/>
+<path id="Vector_5" d="M4.875 8.4375H4.125C3.7125 8.4375 3.375 8.1 3.375 7.6875V6.75H5.625V7.6875C5.625 8.1 5.2875 8.4375 4.875 8.4375Z" fill="#9FA8DA"/>
+<path id="Vector_6" d="M5.625 7.6875L3.45 7.9875C3.50625 8.11875 3.61875 8.25 3.75 8.325L5.5125 8.08125C5.5875 7.96875 5.625 7.8375 5.625 7.6875ZM3.375 7.25625V7.63125L5.625 7.3125V6.9375L3.375 7.25625Z" fill="#5C6BC0"/>
+</g>
+<defs>
+<clipPath id="clip-idea">
+<rect width="9" height="9" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+</span><div><span class="finding-k finding-k-green">Решение от Erythro.ai:</span> <span class="finding-p finding-p-inline">Подключение умных AI-агентов (n8n/CRM) для мгновенной квалификации и ответа в Telegram 24/7.</span></div></div></div></article><article class="finding"><div class="finding-idx" style="background:#b5a58d;">03</div><div class="finding-body"><div class="finding-row"><span class="ico ico-alert"><svg    width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="ri:alert-fill">
+<path id="Vector" d="M6.43299 1.50001L11.196 9.75001C11.2399 9.82602 11.263 9.91224 11.263 10C11.263 10.0878 11.2399 10.174 11.196 10.25C11.1521 10.326 11.089 10.3891 11.013 10.433C10.937 10.4769 10.8508 10.5 10.763 10.5H1.23699C1.14922 10.5 1.063 10.4769 0.986991 10.433C0.910983 10.3891 0.847866 10.326 0.803984 10.25C0.760101 10.174 0.736999 10.0878 0.737 10C0.737 9.91224 0.760103 9.82602 0.803987 9.75001L5.56699 1.50001C5.61087 1.424 5.67399 1.36089 5.75 1.31701C5.826 1.27313 5.91222 1.25003 5.99999 1.25003C6.08775 1.25003 6.17397 1.27313 6.24998 1.31701C6.32598 1.36089 6.3891 1.424 6.43299 1.50001ZM5.49999 8.00001V9.00001H6.49999V8.00001H5.49999ZM5.49999 4.50001V7.00001H6.49999V4.50001H5.49999Z" fill="#E52421"/>
+</g>
+</svg>
+</span><div><span class="finding-k finding-k-red">Проблема:</span> <span class="finding-title">Несоответствие закону о доступности (IS 5568 / WCAG 2.1 AA)</span><div class="finding-p">Отсутствие aria-лейблов на кнопках мобильного меню и некорректное RTL-выравнивание заголовков на иврите.</div></div></div><div class="finding-row"><span class="ico ico-diagram"><svg    width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="diagram">
+<rect id="Rectangle 15" x="9.61651e-08" width="8" height="8" fill="#FF7900"/>
+<line id="Line 12" x1="2.5" x2="2.5" y2="8" stroke="#CA621C"/>
+<line id="Line 14" x1="8" y1="2.5" x2="4.80825e-08" y2="2.5" stroke="#CA621C"/>
+<line id="Line 15" x1="8" y1="5.5" x2="4.80825e-08" y2="5.5" stroke="#CA621C"/>
+<line id="Line 13" x1="5.5" x2="5.5" y2="8" stroke="#CA621C"/>
+<path id="Vector" d="M6.68987 6.05111C6.77816 6.2201 6.70989 6.42516 6.53733 6.50918C6.36477 6.59321 6.15331 6.52435 6.06501 6.35536L4.99625 4.30999C4.91221 4.14913 4.857 4.04385 4.80956 3.96649C4.76321 3.89078 4.73904 3.86702 4.72769 3.85779C4.64137 3.78758 4.52635 3.76125 4.41796 3.78688C4.40372 3.79026 4.37158 3.80113 4.2967 3.84908C4.22021 3.89813 4.1245 3.96886 3.97847 4.07705L3.96936 4.08385C3.83497 4.18343 3.72039 4.26838 3.62168 4.33166C3.51911 4.39739 3.40971 4.4559 3.28296 4.48588C2.95783 4.5628 2.61274 4.48384 2.35378 4.27325C2.25285 4.19114 2.17998 4.0909 2.11641 3.98716C2.05528 3.8873 1.9893 3.76103 1.91192 3.61298L0.837825 1.55749C0.74953 1.38852 0.817825 1.18342 0.990369 1.0994C1.16291 1.01538 1.37437 1.08424 1.46267 1.25322L2.53151 3.29862C2.61557 3.45953 2.67075 3.56475 2.71818 3.64217C2.76453 3.71787 2.78876 3.7416 2.80006 3.75081C2.88639 3.82103 3.00145 3.84737 3.10979 3.82172C3.12403 3.81835 3.15622 3.80748 3.23105 3.75953C3.30754 3.71048 3.40324 3.63979 3.54928 3.53156L3.55838 3.5248C3.69278 3.42518 3.80736 3.34023 3.90607 3.27698C4.00864 3.21123 4.11804 3.15271 4.24479 3.12273C4.56992 3.04581 4.91506 3.12479 5.174 3.33539C5.27491 3.41748 5.34781 3.51771 5.41136 3.62149C5.47248 3.72131 5.53847 3.84758 5.61582 3.99568L6.68987 6.05111Z" fill="white"/>
+</g>
+</svg>
+</span><div><span class="finding-k finding-k-orange">Потери бизнеса:</span> <span class="finding-p finding-p-inline">Риск юридических претензий и снижение конверсии региональной аудитории.</span></div></div><div class="finding-row"><span class="ico ico-idea"><svg    width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="flat-color-icons:idea" clip-path="url(#clip-idea)">
+<path id="Vector" d="M4.5 7.875C6.57107 7.875 8.25 6.19607 8.25 4.125C8.25 2.05393 6.57107 0.375 4.5 0.375C2.42893 0.375 0.75 2.05393 0.75 4.125C0.75 6.19607 2.42893 7.875 4.5 7.875Z" fill="#FFF59D"/>
+<path id="Vector_2" d="M6.9375 4.125C6.9375 2.68125 5.7 1.5375 4.21875 1.70625C3.09375 1.8375 2.19375 2.7375 2.08125 3.8625C1.9875 4.725 2.34375 5.49375 2.94375 5.98125C3.20625 6.20625 3.375 6.525 3.375 6.88125V6.9375H5.625V6.91875C5.625 6.58125 5.775 6.24375 6.0375 6.01875C6.58125 5.56875 6.9375 4.89375 6.9375 4.125Z" fill="#FBC02D"/>
+<path id="Vector_3" d="M5.7375 3.7875L5.175 3.4125C5.11875 3.375 5.025 3.375 4.96875 3.4125L4.5 3.7125L4.05 3.4125C3.99375 3.375 3.9 3.375 3.84375 3.4125L3.28125 3.7875C3.24375 3.825 3.20625 3.8625 3.20625 3.91875C3.20625 3.975 3.20625 4.03125 3.24375 4.06875L3.95625 4.95V6.9375H4.33125V4.875C4.33125 4.8375 4.3125 4.8 4.29375 4.7625L3.675 3.99375L3.95625 4.10625C4.4625 4.14375 4.55625 4.14375 4.6125 4.10625L5.0625 3.80625L5.34375 3.99375L4.725 4.7625C4.70625 4.8 4.6875 4.8375 4.6875 4.875V6.9375H5.0625V4.95L5.775 4.06875C5.8125 4.03125 5.83125 3.975 5.8125 3.91875C5.79375 3.8625 5.775 3.80625 5.7375 3.7875Z" fill="#FFF59D"/>
+<path id="Vector_4" d="M4.5 8.8125C4.81066 8.8125 5.0625 8.56066 5.0625 8.25C5.0625 7.93934 4.81066 7.6875 4.5 7.6875C4.18934 7.6875 3.9375 7.93934 3.9375 8.25C3.9375 8.56066 4.18934 8.8125 4.5 8.8125Z" fill="#5C6BC0"/>
+<path id="Vector_5" d="M4.875 8.4375H4.125C3.7125 8.4375 3.375 8.1 3.375 7.6875V6.75H5.625V7.6875C5.625 8.1 5.2875 8.4375 4.875 8.4375Z" fill="#9FA8DA"/>
+<path id="Vector_6" d="M5.625 7.6875L3.45 7.9875C3.50625 8.11875 3.61875 8.25 3.75 8.325L5.5125 8.08125C5.5875 7.96875 5.625 7.8375 5.625 7.6875ZM3.375 7.25625V7.63125L5.625 7.3125V6.9375L3.375 7.25625Z" fill="#5C6BC0"/>
+</g>
+<defs>
+<clipPath id="clip-idea">
+<rect width="9" height="9" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+</span><div><span class="finding-k finding-k-green">Решение от Erythro.ai:</span> <span class="finding-p finding-p-inline">Комплексный аудит доступности, исправление RTL-зеркалирования и сертификация по стандарту IS 5568.</span></div></div></div></article>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: MOBILE UX, RTL, FORMS & SECURITY -->
+        <div class="section-row">
+            <div class="section-toc">
+                <div class="toc-item">
+                    <div class="toc-bar"></div>
+                    <div class="toc-text">МОБИЛЬНЫЙ UX, RTL, ФОРМЫ &amp; БЕЗОПАСНОСТЬ</div>
+                </div>
+            </div>
+            <div class="section-content">
+                <table class="checks-table">
+                    <thead>
+                        <tr>
+                            <th>ПАРАМЕТР АУДИТА</th>
+                            <th>РЕЗУЛЬТАТ ПРОВЕРКИ</th>
+                            <th>СТАТУС</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="check-param">Паразитный боковой скролл (Overflow-X на смартфонах 375px)</td>
+                            <td class="check-result">Идеально подогнано под экран смартфона (0px перелива)</td>
+                            <td class="check-status"><span class="status-badge status-good">Отлично</span></td>
+                        </tr>
+                        <tr>
+                            <td class="check-param">RTL-зеркалирование и верстка для Израиля (Иврит)</td>
+                            <td class="check-result">Тег dir="rtl" активен, элементы выровнены справа</td>
+                            <td class="check-status"><span class="status-badge status-good">Норма</span></td>
+                        </tr>
+                        <tr>
+                            <td class="check-param">Лид-формы, антиспам и мгновенный ответ</td>
+                            <td class="check-result">Форм: 1. Email: да, телефон: да. Антиспам: Turnstile. Мгновенный канал: WhatsApp</td>
+                            <td class="check-status"><span class="status-badge status-good">Работает</span></td>
+                        </tr>
+                        <tr>
+                            <td class="check-param">HTTPS и HTTP-заголовки безопасности</td>
+                            <td class="check-result">HTTPS активен; заголовки 6/6</td>
+                            <td class="check-status"><span class="status-badge status-good">Защищено</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- SECTION 3: LIGHTHOUSE METRICS -->
+        <div class="section-row">
+            <div class="section-toc">
+                <div class="toc-item">
+                    <div class="toc-bar"></div>
+                    <div class="toc-text">СКОРОСТЬ ЗАГРУЗКИ И<br>CORE WEB VITALS<br>(GOOGLE LIGHTHOUSE)</div>
+                </div>
+            </div>
+            <div class="section-content">
+                <table class="metrics"><thead><tr><th>УСТРОЙСТВО</th><th>PERFOMANCE</th><th>ACCESSEBILITY</th><th>BEST PRACTICES</th><th>SEO</th><th>FCP</th><th>LCP</th><th>CLS</th></tr></thead><tbody><tr><td class="device">MOBILE (IPHONE SE)</td><td><span class="badge badge-warn">72</span></td><td><span class="badge badge-bad">54</span></td><td><span class="badge badge-good">100</span></td><td><span class="badge badge-good">100</span></td><td>2.1S</td><td>3.4S</td><td>0.02</td></tr><tr><td class="device">DESKTOP</td><td><span class="badge badge-good">96</span></td><td><span class="badge badge-good">98</span></td><td><span class="badge badge-good">100</span></td><td><span class="badge badge-good">100</span></td><td>2.1S</td><td>3.4S</td><td>0.02</td></tr></tbody></table>
+            </div>
+        </div>
+    </div>
+        </td></tr></tbody>
+    </table>
+    <footer class="footer">
+        <div class="cta-title">Внедрите AI-автоматизацию и увеличьте конверсию сайта с <svg width="87" height="19" viewBox="0 0 87 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Erythro.ai">
+<path d="M12.7054 14.8836V4.41167H15.9904V6.26988H16.0339C16.2338 5.60127 16.5292 5.10633 16.9464 4.80242C17.3548 4.49851 17.9023 4.35089 18.5715 4.35089C19.2407 4.35089 18.9104 4.35089 19.0668 4.35957C19.2233 4.35957 19.3623 4.37694 19.5014 4.38562V7.20766C19.371 7.19898 19.1711 7.18161 18.9104 7.16425C18.6497 7.15556 18.3977 7.14688 18.163 7.14688C17.7546 7.14688 17.3983 7.2424 17.0854 7.42474C16.7726 7.60709 16.5292 7.86759 16.3554 8.20623C16.1816 8.54487 16.0947 8.95298 16.0947 9.43924V14.8836H12.7054Z" fill="white"/>
+<path d="M21.5002 18.9213L21.6653 16.3337L22.8819 16.3598C23.16 16.3771 23.3773 16.3598 23.5598 16.299C23.7336 16.2382 23.8727 16.1253 23.9769 15.969C24.0812 15.8127 24.1594 15.6043 24.2203 15.3438L24.3593 14.8749L20.353 4.41168H23.8987L25.4543 9.309C25.6542 9.97761 25.8454 10.6462 26.0192 11.3235C26.193 12.0008 26.3668 12.6868 26.5406 13.3814H25.6368C25.8106 12.6868 25.9844 11.9921 26.1582 11.3148C26.3407 10.6375 26.5319 9.96893 26.7492 9.309L28.3482 4.41168H31.8592L27.3662 16.2729C27.1403 16.8894 26.8622 17.3931 26.5406 17.8012C26.2191 18.2093 25.828 18.5045 25.3761 18.7042C24.9242 18.9039 24.3767 18.9994 23.7423 18.9994C23.1079 18.9994 22.9775 18.9994 22.5952 18.9821C22.2041 18.9647 21.8391 18.9473 21.5002 18.9213Z" fill="white"/>
+<path d="M39.8283 4.41166V7.00794H32.6587V4.41166H39.8283ZM34.3533 1.64172H37.7426V11.4364C37.7426 11.7576 37.8121 11.9834 37.9425 12.105C38.0728 12.2352 38.3249 12.296 38.6812 12.296C39.0375 12.296 39.0375 12.296 39.2808 12.296C39.5241 12.296 39.6979 12.296 39.8022 12.2786L39.8978 14.8489C39.6719 14.8749 39.3851 14.8923 39.0288 14.901C38.6725 14.9096 38.3075 14.9183 37.9425 14.9183C36.7171 14.9183 35.822 14.6752 35.2311 14.1889C34.6488 13.7027 34.3533 12.9559 34.3533 11.94V1.64172Z" fill="white"/>
+<path d="M44.8949 9.13531V14.8923H41.5056V0.304504H44.8775V7.18159H44.4082C44.7211 6.27854 45.173 5.55784 45.7726 5.01948C46.3723 4.48112 47.1631 4.20326 48.1451 4.20326C49.1271 4.20326 49.553 4.36824 50.0831 4.68952C50.6219 5.01948 51.0303 5.47969 51.3258 6.09619C51.6126 6.70402 51.7603 7.43341 51.7603 8.28436V14.8836H48.3711V8.97033C48.3711 8.35383 48.2233 7.88493 47.9279 7.56365C47.6324 7.23369 47.2152 7.0774 46.6677 7.0774C46.1202 7.0774 45.9986 7.15554 45.7292 7.30316C45.4598 7.45077 45.2599 7.67654 45.1121 7.98045C44.9644 8.28436 44.8949 8.66642 44.8949 9.12663V9.13531Z" fill="white"/>
+<path d="M53.9156 14.8836V4.41167H57.2005V6.26988H57.2353C57.4352 5.60127 57.7307 5.10633 58.1478 4.80242C58.5562 4.49851 59.1037 4.35089 59.7729 4.35089C60.4421 4.35089 60.1118 4.35089 60.2683 4.35957C60.4247 4.35957 60.5637 4.37694 60.7028 4.38562V7.20766C60.5724 7.19898 60.3726 7.18161 60.1118 7.16425C59.8511 7.15556 59.5991 7.14688 59.3645 7.14688C58.956 7.14688 58.5997 7.2424 58.2868 7.42474C57.974 7.60709 57.7307 7.86759 57.5568 8.20623C57.383 8.54487 57.2961 8.95298 57.2961 9.43924V14.8836H53.9069H53.9156Z" fill="white"/>
+<path d="M67.012 15.1094C65.917 15.1094 64.9524 14.8836 64.1355 14.4321C63.3186 13.9805 62.6842 13.3467 62.2323 12.5304C61.7804 11.7142 61.5544 10.7591 61.5544 9.65631C61.5544 8.55354 61.7804 7.60707 62.2323 6.79085C62.6842 5.97463 63.3186 5.34076 64.1355 4.88055C64.9524 4.42034 65.917 4.19458 67.012 4.19458C68.107 4.19458 69.063 4.42034 69.8799 4.88055C70.6968 5.34076 71.3312 5.97463 71.7831 6.79085C72.235 7.60707 72.4609 8.56223 72.4609 9.65631C72.4609 10.7504 72.235 11.7142 71.7831 12.5304C71.3312 13.3467 70.6968 13.9805 69.8799 14.4321C69.063 14.8836 68.107 15.1094 67.012 15.1094ZM67.012 12.4523C67.4118 12.4523 67.7594 12.3394 68.0636 12.1223C68.3678 11.8966 68.6024 11.584 68.7762 11.1672C68.95 10.7504 69.0282 10.2468 69.0282 9.67368C69.0282 9.10058 68.9413 8.57959 68.7762 8.1628C68.6024 7.75469 68.3678 7.43341 68.0636 7.21633C67.7594 6.99057 67.4118 6.88637 67.012 6.88637C66.6123 6.88637 66.2473 6.99925 65.9431 7.21633C65.639 7.43341 65.3956 7.75469 65.2305 8.1628C65.0654 8.57959 64.9785 9.08322 64.9785 9.67368C64.9785 10.2641 65.0654 10.7591 65.2305 11.1759C65.3956 11.5927 65.6303 11.9053 65.9431 12.131C66.2473 12.3568 66.6036 12.461 67.012 12.461V12.4523Z" fill="white"/>
+<path d="M5.77909 12.5391C4.64064 12.296 3.78898 11.7055 3.60648 10.5159H10.9499C11.0194 10.1165 11.0629 9.57816 11.0629 9.11795C11.0629 5.75755 9.10753 4.06433 5.80516 4.06433C5.79647 4.06433 5.77909 4.06433 5.7704 4.06433V6.31328C5.80516 6.31328 5.83993 6.31328 5.87469 6.31328C7.21302 6.31328 7.89956 6.99925 7.94301 8.36251H5.7704H3.59779H0.321495C0.243281 8.78799 0.199829 9.2482 0.199829 9.74314C0.199829 13.3119 2.4072 15.0399 5.77909 15.257V12.5478V12.5391Z" fill="white"/>
+<path d="M85.7656 4.19434C86.4472 4.19434 87 4.74676 87 5.42773V13.876C87 14.557 86.4472 15.1094 85.7656 15.1094H77.3105C76.629 15.1094 76.0762 14.557 76.0762 13.876V5.42773C76.0762 4.74676 76.629 4.19434 77.3105 4.19434H85.7656ZM80.3691 7.89355C79.926 7.89356 79.5434 7.95461 79.2393 8.07617C78.9352 8.19773 78.6914 8.37097 78.5264 8.59668C78.3613 8.82241 78.2662 9.10055 78.2314 9.41309L79.7432 9.44824C79.7605 9.35273 79.7954 9.28246 79.8389 9.22168C79.8823 9.16098 79.9521 9.10903 80.0303 9.08301C80.1085 9.05697 80.2043 9.04004 80.3086 9.04004C80.4128 9.04006 80.5 9.05698 80.5781 9.08301C80.6562 9.10905 80.7085 9.14425 80.752 9.19629C80.7952 9.24829 80.8125 9.30079 80.8125 9.37012V9.38672C80.8125 9.47355 80.7775 9.53481 80.708 9.58691C80.6385 9.63897 80.5255 9.68197 80.3691 9.70801C80.2127 9.73406 80.0127 9.76095 79.752 9.77832C79.5175 9.79569 79.3003 9.82989 79.0918 9.89062C78.8832 9.95141 78.7005 10.0297 78.5527 10.1426C78.405 10.2554 78.2832 10.3947 78.1963 10.5684C78.1095 10.7419 78.0664 10.8983 78.0664 11.1934C78.0664 11.4885 78.1275 11.7319 78.2578 11.9229C78.3881 12.1136 78.5615 12.261 78.7871 12.3564C79.013 12.4519 79.274 12.4961 79.5693 12.4961V12.5039C79.7605 12.5039 79.9344 12.478 80.0908 12.4346C80.2472 12.3912 80.395 12.3219 80.5166 12.2178C80.6383 12.1136 80.7521 11.9744 80.8477 11.8008H80.8643V12.4258H82.4727V9.43945C82.4727 9.19632 82.4286 8.97912 82.333 8.78809C82.2374 8.59707 82.1073 8.432 81.9248 8.30176C81.7424 8.17157 81.5252 8.06751 81.2646 7.99805C81.0039 7.92858 80.8124 7.89355 80.3691 7.89355ZM83.3066 7.98047V12.418H84.9668V7.98047H83.3066ZM80.8477 10.8369C80.8477 10.9758 80.8213 11.0803 80.7432 11.1758C80.665 11.2712 80.5777 11.3404 80.4648 11.3838C80.3534 11.4266 80.2419 11.4524 80.1221 11.4531C80.0282 11.4529 79.9512 11.4444 79.874 11.4102C79.7959 11.3755 79.7436 11.3323 79.7002 11.2803C79.6567 11.2282 79.6396 11.1495 79.6396 11.0801C79.6397 11.0107 79.6568 10.9415 79.7002 10.8809C79.7436 10.8201 79.8134 10.7681 79.8916 10.7334C79.9697 10.6987 80.0737 10.6638 80.1865 10.6465C80.2647 10.6291 80.3347 10.6112 80.3955 10.6025C80.4562 10.5939 80.5173 10.5857 80.5693 10.5684C80.6214 10.551 80.6734 10.5331 80.7168 10.5244C80.7602 10.5157 80.8042 10.4988 80.8477 10.4814V10.8369ZM84.1318 6.06152C83.8801 6.06159 83.6718 6.13971 83.5068 6.28711C83.3417 6.43471 83.2627 6.62583 83.2627 6.85156C83.2627 7.07733 83.3417 7.2684 83.5068 7.41602C83.6719 7.56345 83.8801 7.64154 84.1318 7.6416C84.3838 7.6416 84.5927 7.56362 84.7578 7.41602C84.9229 7.2684 85.001 7.07733 85.001 6.85156C85.001 6.62583 84.9229 6.43471 84.7578 6.28711C84.5927 6.13954 84.3838 6.06152 84.1318 6.06152Z" fill="white"/>
+</svg>
+</div>
+        <div class="cta-sub">Запишитесь на бесплатный разбор с СТО Erythro.ai: оптимизируем CoreWeb Vitals до 90+, внедрим AI-агентов обработки заявок и ошибок, защитим от сбоев.</div>
+        <div class="cta-buttons">
+            <a class="btn" href="https://wa.me/972533333333">Whatsapp консультация</a>
+            <a class="btn" href="https://t.me/erythro_ai">Telegram(@erythro_ai)</a>
+            <a class="btn" href="https://erythro.ai/">Сайт (erythro.ai)</a>
+        </div>
+        <div class="copy">© 2026 Erythro.ai - Hi-Load Web Development &amp; Ai Agents Automation | Commercial Executive Audit</div>
+    </footer>
+</div>
+</body>
+</html>

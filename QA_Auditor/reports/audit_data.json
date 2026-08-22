@@ -1,144 +1,248 @@
 {
   "uncaught_page_errors" : [ ],
   "console_logs" : [ {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/21350d82a1f187e9-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
     "location" : "https://erythro.ai/:0:0",
     "locale" : "en"
   }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/739c2d8941231bb4-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
     "location" : "https://erythro.ai/:0:0",
     "locale" : "en"
   }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/ad8a7e2c3c2c120b-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-    "location" : "https://erythro.ai/:0:0",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
+    "location" : ":8:0",
     "locale" : "en"
   }, {
     "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/ec516af01d950ed6-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "text" : "The resource https://erythro.ai/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_EKhyMXdmhYSka4htKiV98BJXTaaa was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
     "location" : "https://erythro.ai/:0:0",
     "locale" : "en"
   }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/8e9860b6e62d6359-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-    "location" : "https://erythro.ai/:0:0",
-    "locale" : "en"
-  }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/d2e3c073bbb3955e-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-    "location" : "https://erythro.ai/:0:0",
-    "locale" : "en"
-  }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-    "location" : "https://erythro.ai/:0:0",
-    "locale" : "en"
-  }, {
-    "type" : "warning",
-    "text" : "Couldn't load preload assets:  Error: Preload assets timed out.\n    at https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:12:294147",
-    "location" : "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:11:446764",
-    "locale" : "en"
-  }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/21350d82a1f187e9-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
     "location" : "https://erythro.ai/:0:0",
     "locale" : "ru"
   }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/739c2d8941231bb4-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
     "location" : "https://erythro.ai/:0:0",
     "locale" : "ru"
   }, {
+    "type" : "error",
+    "text" : "Refused to load the script 'https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
+    "location" : ":8:0",
+    "locale" : "ru"
+  }, {
     "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/ad8a7e2c3c2c120b-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "text" : "The resource https://erythro.ai/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_EKhyMXdmhYSka4htKiV98BJXTaaa was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
     "location" : "https://erythro.ai/:0:0",
     "locale" : "ru"
   }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/ec516af01d950ed6-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
     "location" : "https://erythro.ai/:0:0",
-    "locale" : "ru"
+    "locale" : "he"
   }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/8e9860b6e62d6359-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
     "location" : "https://erythro.ai/:0:0",
-    "locale" : "ru"
+    "locale" : "he"
+  }, {
+    "type" : "error",
+    "text" : "Refused to load the script 'https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
+    "location" : ":8:0",
+    "locale" : "he"
   }, {
     "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/d2e3c073bbb3955e-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "text" : "The resource https://erythro.ai/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_EKhyMXdmhYSka4htKiV98BJXTaaa was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
     "location" : "https://erythro.ai/:0:0",
-    "locale" : "ru"
+    "locale" : "he"
   }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
     "location" : "https://erythro.ai/:0:0",
-    "locale" : "ru"
+    "locale" : "he"
   }, {
-    "type" : "warning",
-    "text" : "Couldn't load preload assets:  Error: Preload assets timed out.\n    at https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:12:294147",
-    "location" : "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:11:446764",
-    "locale" : "ru"
-  }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/21350d82a1f187e9-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
     "location" : "https://erythro.ai/:0:0",
     "locale" : "he"
   }, {
     "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/739c2d8941231bb4-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "text" : "The resource https://erythro.ai/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_EKhyMXdmhYSka4htKiV98BJXTaaa was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
     "location" : "https://erythro.ai/:0:0",
     "locale" : "he"
   }, {
     "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/ad8a7e2c3c2c120b-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "text" : "The resource https://erythro.ai/_next/image?url=https%3A%2F%2Fwgw9moyqjdjcaq9l.public.blob.vercel-storage.com%2FHero_Mobile.webp&w=640&q=70 was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
     "location" : "https://erythro.ai/:0:0",
     "locale" : "he"
   }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/ec516af01d950ed6-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-    "location" : "https://erythro.ai/:0:0",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
+    "location" : "https://erythro.ai/portfolio:0:0",
+    "locale" : "he"
+  }, {
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
+    "location" : "https://erythro.ai/contacts:0:0",
     "locale" : "he"
   }, {
     "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/8e9860b6e62d6359-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-    "location" : "https://erythro.ai/:0:0",
+    "text" : "The resource https://erythro.ai/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_EKhyMXdmhYSka4htKiV98BJXTaaa was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+    "location" : "https://erythro.ai/contacts:0:0",
     "locale" : "he"
   }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/d2e3c073bbb3955e-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-    "location" : "https://erythro.ai/:0:0",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
+    "location" : "https://erythro.ai/services/enterprise-engineering:0:0",
     "locale" : "he"
   }, {
-    "type" : "warning",
-    "text" : "The resource https://erythro.ai/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-    "location" : "https://erythro.ai/:0:0",
-    "locale" : "he"
-  }, {
-    "type" : "warning",
-    "text" : "Couldn't load preload assets:  Error: Preload assets timed out.\n    at https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:12:294147",
-    "location" : "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:11:446764",
+    "type" : "error",
+    "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
+    "location" : "https://erythro.ai/portfolio/next-project:0:0",
     "locale" : "he"
   } ],
+  "agent_browse" : {
+    "max_pages" : 5,
+    "nav_links_discovered" : 14,
+    "candidates_total" : 18,
+    "selected" : [ {
+      "text" : "homepage",
+      "url" : "https://erythro.ai/",
+      "score" : 1000,
+      "source" : "homepage"
+    }, {
+      "text" : "תיק\nצפו בעבודות נבחרות",
+      "url" : "https://erythro.ai/portfolio",
+      "score" : 91,
+      "source" : "sitemap+nav"
+    }, {
+      "text" : "אנשי קשר\nצרו קשר ומצאו אותנו",
+      "url" : "https://erythro.ai/contacts",
+      "score" : 91,
+      "source" : "sitemap+nav"
+    }, {
+      "text" : "הנדסת ארגונים",
+      "url" : "https://erythro.ai/services/enterprise-engineering",
+      "score" : 81,
+      "source" : "sitemap+nav"
+    }, {
+      "text" : "",
+      "url" : "https://erythro.ai/portfolio/next-project",
+      "score" : 81,
+      "source" : "sitemap"
+    } ],
+    "pages_visited" : 5,
+    "pages_ok" : 5,
+    "pages_broken" : 0,
+    "broken_urls" : [ ],
+    "inner_pages_with_cta" : 4,
+    "inner_pages_forms_total" : 1,
+    "pages" : [ {
+      "url" : "https://erythro.ai/",
+      "source" : "homepage",
+      "score" : 1000,
+      "http_status" : 200,
+      "title" : "Erythro.ai - סוכנות דיגיטל",
+      "h1" : [ ],
+      "formsCount" : 0,
+      "wordCount" : 761,
+      "hasCta" : true,
+      "soft404" : false,
+      "htmlLang" : "he",
+      "dir" : "rtl",
+      "ok" : true
+    }, {
+      "url" : "https://erythro.ai/portfolio",
+      "source" : "sitemap+nav",
+      "score" : 91,
+      "http_status" : 200,
+      "title" : "Portfolio | Erythro.ai",
+      "h1" : [ "PORTFOLIO" ],
+      "formsCount" : 0,
+      "wordCount" : 211,
+      "hasCta" : true,
+      "soft404" : false,
+      "htmlLang" : "he",
+      "dir" : "rtl",
+      "ok" : true
+    }, {
+      "url" : "https://erythro.ai/contacts",
+      "source" : "sitemap+nav",
+      "score" : 91,
+      "http_status" : 200,
+      "title" : "יצירת קשר | Erythro.ai",
+      "h1" : [ "יצירת קשר" ],
+      "formsCount" : 1,
+      "wordCount" : 246,
+      "hasCta" : true,
+      "soft404" : false,
+      "htmlLang" : "he",
+      "dir" : "rtl",
+      "ok" : true
+    }, {
+      "url" : "https://erythro.ai/services/enterprise-engineering",
+      "source" : "sitemap+nav",
+      "score" : 81,
+      "http_status" : 200,
+      "title" : "פיתוח אתרים ארגוניים ושירותי Backend בעומס גבוה | Erythro.ai",
+      "h1" : [ "הנדסת ארגונים" ],
+      "formsCount" : 0,
+      "wordCount" : 1107,
+      "hasCta" : true,
+      "soft404" : false,
+      "htmlLang" : "he",
+      "dir" : "rtl",
+      "ok" : true
+    }, {
+      "url" : "https://erythro.ai/portfolio/next-project",
+      "source" : "sitemap",
+      "score" : 81,
+      "http_status" : 200,
+      "title" : "הפרויקט הבא | Portfolio | Erythro.ai",
+      "h1" : [ "הפרויקט הבא" ],
+      "formsCount" : 0,
+      "wordCount" : 190,
+      "hasCta" : true,
+      "soft404" : false,
+      "htmlLang" : "he",
+      "dir" : "rtl",
+      "ok" : true
+    } ],
+    "shallow_site" : false,
+    "missing_contact_page_in_sample" : false,
+    "gemini_review" : {
+      "http_status" : 200,
+      "raw_text" : "{\"verdict\":\"Путь к заявке усложнен: лид-форма есть только на странице контактов. На ключевых страницах услуг и в портфолио отсутствуют встроенные формы, что снижает конверсию.\",\"gaps\":[\"Отсутствие лид-форм на главной странице и страницах услуг\",\"Принудительный переход на страницу контактов для отправки заявки\",\"Отсутствие быстрых модальных форм по клику на CTA-кнопки\"],\"priority_fix\":\"Добавить встроенные формы заявки и модальные окна по клику на CTA на ключевые страницы (главная, услуги, портфолио).\"}",
+      "status" : "SUCCESS",
+      "verdict" : "Путь к заявке усложнен: лид-форма есть только на странице контактов. На ключевых страницах услуг и в портфолио отсутствуют встроенные формы, что снижает конверсию.",
+      "gaps" : [ "Отсутствие лид-форм на главной странице и страницах услуг", "Принудительный переход на страницу контактов для отправки заявки", "Отсутствие быстрых модальных форм по клику на CTA-кнопки" ],
+      "priority_fix" : "Добавить встроенные формы заявки и модальные окна по клику на CTA на ключевые страницы (главная, услуги, портфолио)."
+    }
+  },
+  "target_url" : "https://erythro.ai/",
   "pagespeed_insights" : {
     "mobile" : {
       "scores" : {
-        "performance" : 75,
+        "performance" : 90,
         "accessibility" : 100,
-        "best_practices" : 100,
+        "best_practices" : 92,
         "seo" : 100
       },
       "metrics" : {
         "FCP" : {
-          "displayValue" : "2.0 s",
-          "numericValue" : 1951.0,
-          "score" : 0.85
+          "displayValue" : "2.4 s",
+          "numericValue" : 2401.0,
+          "score" : 0.71
         },
         "LCP" : {
-          "displayValue" : "5.7 s",
-          "numericValue" : 5655.68019001076,
-          "score" : 0.17
+          "displayValue" : "2.7 s",
+          "numericValue" : 2701.0,
+          "score" : 0.85
         },
         "CLS" : {
           "displayValue" : "0",
@@ -151,59 +255,84 @@
           "score" : 1.0
         },
         "Speed Index" : {
-          "displayValue" : "4.2 s",
-          "numericValue" : 4194.599417112592,
-          "score" : 0.77
+          "displayValue" : "5.0 s",
+          "numericValue" : 4974.055501874419,
+          "score" : 0.64
         },
         "TTI" : {
-          "displayValue" : "5.7 s",
-          "numericValue" : 5693.18019001076,
-          "score" : 0.68
+          "displayValue" : "2.7 s",
+          "numericValue" : 2716.0,
+          "score" : 0.97
         }
       },
       "status" : "SUCCESS"
     },
     "desktop" : {
       "scores" : {
-        "performance" : 95,
+        "performance" : 99,
         "accessibility" : 100,
-        "best_practices" : 100,
+        "best_practices" : 92,
         "seo" : 100
       },
       "metrics" : {
         "FCP" : {
-          "displayValue" : "0.4 s",
-          "numericValue" : 441.0,
-          "score" : 1.0
+          "displayValue" : "0.6 s",
+          "numericValue" : 561.0,
+          "score" : 0.99
         },
         "LCP" : {
-          "displayValue" : "0.9 s",
-          "numericValue" : 927.0,
-          "score" : 0.96
+          "displayValue" : "1.0 s",
+          "numericValue" : 971.0,
+          "score" : 0.95
         },
         "CLS" : {
           "displayValue" : "0",
-          "numericValue" : 2.55873682981642E-5,
+          "numericValue" : 0.0,
           "score" : 1.0
         },
         "TBT" : {
-          "displayValue" : "150 ms",
-          "numericValue" : 149.0,
-          "score" : 0.9
+          "displayValue" : "0 ms",
+          "numericValue" : 1.0,
+          "score" : 1.0
         },
         "Speed Index" : {
-          "displayValue" : "1.1 s",
-          "numericValue" : 1131.1250407616617,
-          "score" : 0.94
+          "displayValue" : "0.9 s",
+          "numericValue" : 859.0473355327294,
+          "score" : 0.99
         },
         "TTI" : {
-          "displayValue" : "1.3 s",
-          "numericValue" : 1272.0,
+          "displayValue" : "1.0 s",
+          "numericValue" : 984.3,
           "score" : 1.0
         }
       },
       "status" : "SUCCESS"
     }
+  },
+  "infrastructure_and_security" : {
+    "origin" : "https://erythro.ai",
+    "is_https" : true,
+    "http_status" : 200,
+    "ttfb_ms" : 477,
+    "server" : "cloudflare",
+    "security_headers" : {
+      "strict-transport-security" : "max-age=63072000",
+      "content-security-policy" : "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://vitals.vercel-insights.com https://*.public.blob.vercel-storage.com; media-src 'self' blob: https:; frame-ancestors 'self'; base-uri 'self'; form-action 'self'",
+      "x-frame-options" : "SAMEORIGIN",
+      "x-content-type-options" : "nosniff",
+      "referrer-policy" : "strict-origin-when-cross-origin",
+      "permissions-policy" : "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    },
+    "security_headers_missing" : [ ],
+    "security_headers_present" : 6,
+    "robots_txt_status" : 200,
+    "has_robots_txt" : true,
+    "robots_sitemap_directives" : [ "https://erythro.ai/sitemap.xml" ],
+    "has_sitemap_xml" : true,
+    "sitemap_xml_status" : 200,
+    "sitemap_url" : "https://erythro.ai/sitemap.xml",
+    "sitemap_urls_count" : 15,
+    "sitemap_locs" : [ "https://erythro.ai", "https://erythro.ai/portfolio", "https://erythro.ai/contacts", "https://erythro.ai/about", "https://erythro.ai/services/enterprise-engineering", "https://erythro.ai/portfolio/next-project", "https://erythro.ai/portfolio/pro-interior", "https://erythro.ai/portfolio/montblanc", "https://erythro.ai/order/free-start", "https://erythro.ai/order/ai-business-card", "https://erythro.ai/order/business-automation", "https://erythro.ai/order/enterprise-custom", "https://erythro.ai/privacy", "https://erythro.ai/terms", "https://erythro.ai/accessibility" ]
   },
   "audits_by_locale" : {
     "en" : {
@@ -212,61 +341,108 @@
         "description" : "Erythro.ai is a digital agency building high-performance websites, brand identity, and AI automation — from strategy to launch.",
         "ogTitle" : "Erythro.ai - digital agency",
         "ogDescription" : "Erythro.ai is a digital agency building high-performance websites, brand identity, and AI automation — from strategy to launch.",
+        "ogImage" : "https://wgw9moyqjdjcaq9l.public.blob.vercel-storage.com/Og.jpg",
         "canonical" : "https://erythro.ai",
-        "htmlLang" : "en"
+        "htmlLang" : "en",
+        "dir" : "ltr",
+        "h1_count" : 0,
+        "h1_list" : [ ],
+        "h2_count" : 7,
+        "h3_count" : 4
       },
-      "heading_hierarchy_issues" : [ ],
-      "dom_a11y_issues" : {
-        "images_missing_alt_count" : 0,
-        "images_missing_alt_samples" : [ ],
-        "interactive_missing_labels_count" : 0,
-        "interactive_missing_labels_samples" : [ ]
-      },
+      "heading_hierarchy_issues" : [ "Отсутствует тег <h1> на странице" ],
+      "dom_a11y_issues" : [ "Обнаружено 2 изображений без атрибута alt" ],
       "axe_wcag_violations" : [ ],
-      "extracted_texts" : [ "Skip to main content", "digital agency", "PRECISION AI ENGINEERING", "Automating business processes with advanced AI-systems.", "FIND OUT MORE", "Erythro.ai digital agency", "Open menu", "MENU", "MAIN PAGE\nMeet the agency", "MAIN PAGE", "Meet the agency", "PORTFOLIO\nView our selected works", "PORTFOLIO", "View our selected works", "SERVICES\nWhat we can build for you\nDESIGN & BRANDING\nDEVELOPMENT\nENTERPRISE ENGINEERING\nAI & AUTOMATION", "SERVICES\nWhat we can build for you", "SERVICES", "What we can build for you", "DESIGN & BRANDING", "DEVELOPMENT", "ENTERPRISE ENGINEERING", "AI & AUTOMATION", "SOLUTION\nReady-made packages\nFREE START\nAI-BUSINESS CARD\nBUSINESS AUTOMATION\nENTERPRISE: CUSTOM", "SOLUTION\nReady-made packages", "SOLUTION", "Ready-made packages", "FREE START", "AI-BUSINESS CARD", "BUSINESS AUTOMATION", "ENTERPRISE: CUSTOM", "CONTACTS\nGet in touch and find us", "CONTACTS", "Get in touch and find us", "+972 50 931 27 46", "Facebook", "TikTok", "☀️ Light", "ACCESSIBILITY", "CASE STUDY", "We are building digital identities", "View All Projects", "VIEW ALL PROJECTS", ">\n>", "From strategy to launch", "Design & Branding", "Brand Identity / Presentations", "Business card design", "Flyer design", "Web design", "Motion design", "more", "Development", "Custom front-end", "Responsive Layout", "Motion & UI Animation", "SEO Setup", "Easy Publishing", "Enterprise Engineering", "SEO optimization", "Custom back-end & Admin Panels", "DNS setup and security", "API Integrations", "CMS", "Ai & Automation", "AI agents", "Automation process", "Chatbot", "Voice assistance", "Your business works more efficiently when processes run automatically", "We implement AI agents and automation based on", "n8n", "LET'S TALK...", "SOLUTIONS", "Clear pricing models for different types of collaboration", "₪ 0*", "Hosting: 0₪", "Hosting:", "Stack: HTML5 / CSS3 / JavaScript (ES6+)", "Stack:", "Subscription: 199₪/mo.", "Subscription:", "GET A START", "* mandatory 12-month subscription", "₪ 5 000", "5 000", "Stack: WordPress, Elementor Pro", "AI: Integration of a ready-made chatbot for recording and answering FAQs", "AI:", "Subscription: 350₪/mo.", "₪ 18 000", "18 000", "₪ 14 999*", "14 999", "Stack: Next.js, Payload, PostgreSQL", "Automation: n8n (integration with your CRM system, WhatsApp, and newsletters)", "Automation:", "Training: Personal workshop for the team (2-3 hours)", "Training:", "Subscription: 650₪/mo.", "* Available in 12 installments", "FROM", "₪ 70 000*", "70 000", "Stack: React, Java Spring Boot, Cloudflare, custom AI agents", "Security & Infrastructure: Cloudflare WAF, DDoS protection, Zero Trust access", "Security & Infrastructure:", "Support: 24/7 monitoring, DevOps, big data work", "Support:", "Subscription: 2500₪/mo.", "FAQ", "Quick answers to the questions we get most often before a project starts.", "WHAT IS ERYTHRO.AI?", "Erythro.ai is an international B2B digital agency specializing in premium web design, custom software development, branding, and end-to-end AI-powered business process automation. We combine the aesthetics of \"quiet luxury\" with engineering precision and a robust server architecture.", "HOW LONG DOES IT TAKE TO LAUNCH A PROJECT?", "Timeline depends on scope: a landing page usually takes a few weeks, while a CMS site with integrations and motion needs more time. After the brief, we provide a clear roadmap and milestones.", "DO YOU ONLY HANDLE DESIGN, OR CAN YOU DELIVER EVERYTHING END-TO-END?", "We can cover the full cycle: strategy, design, development, CMS, baseline SEO, motion, and launch. When needed, we also add branding, AI automation, and ongoing support.", "WILL WE BE ABLE TO EDIT THE CONTENT OURSELVES LATER?", "Yes. We build editor-friendly structure and admin tooling, so your team can update copy, imagery, case studies, services, and SEO fields without a developer.", "DO YOU TAKE AI AND AUTOMATION PROJECTS TOO?", "Yes. In addition to websites, we build AI agents, n8n automations, CRM-connected flows, chat, and voice experiences when they create real business value.", "HOW DOES A CHATBOT MANAGE A WEBSITE?", "Using n8n scripts and the Payload CMS open REST API, your administrator or manager can publish news, update services, and edit content directly from Telegram or Slack by sending natural language commands to the bot.", "DO YOUR SOLUTIONS COMPLY WITH IL AND EU LEGAL STANDARDS?", "Yes. All Erythro.ai web products, database architecture, and AI solutions are designed in strict compliance with Israeli and European Union regulatory requirements:", "Accessibility (Israel): Full compliance with the national standard IS 5568 (WCAG 2.1 AA), protecting your business from legal risks and fines.", "Artificial Intelligence (EU): Strict compliance with the EU AI Act when implementing AI agents. We ensure algorithm transparency, risk classification, ethical data processing, and personal data protection (GDPR compliance) for clients operating internationally.", "Database Security and Privacy (Israel): Architecture design taking into account Amendment No. 13 to the Privacy Protection Act and the Data Security Regulations.", "We eliminate the need for standard B2B businesses to register databases, while fully addressing legal requirements:", "We implement cryptographic protection and end-to-end encryption of backups (BACKUP_ENCRYPTION_KEY).", "We prepare the necessary legal documents for the website (Privacy Policy, Terms of Use) and an internal Database Definition Document (DBD), which describes the rules for access and data storage.", "You have a project idea?\nLet's talk about it!", "Company", "Case Studies", "Services", "Solutions", "Contact Info", "EMAIL: erythro.ai@gmail.com", "EMAIL:", "erythro.ai@gmail.com", "PHONE: +972 50 931 27 46", "PHONE:", "LOCATION: Eilat, Israel", "LOCATION:", "COPYRIGHT © 2026. ALL RIGHTS RESERVED", "PRIVACY", "TERMS & CONDITIONS", "COOKIE SETTINGS", "Back to top", "Scroll, next section", "Open contact form", "WhatsApp", "ACCESSIBILITY CONTROLS", "Close accessibility panel", "BIGGER TEXT", "DYSLEXIA FRIENDLY", "HIGH CONTRAST", "MONOCHROME", "HIGHLIGHT LINKS", "PAUSE ANIMATIONS", "TEXT SPACING", "BIG CURSOR", "KEYBOARD NAVIGATION", "SCREEN READER", "Accessibility Statement", "RESET SETTINGS", "We use cookies on our website to remember your language preference and improve your experience. Privacy Policy", "Privacy Policy", "DECLINE", "ACCEPT" ],
-      "spelling_issues" : [ ],
+      "extracted_texts" : [ "Skip to main content", "digital agency", "Precision AI Engineering", "ENGINEERING FUTURE", "Automating business processes with advanced AI-systems.", "FIND OUT MORE", "Menu", "Main Page", "Meet the agency", "Portfolio", "View our selected works", "SERVICES", "What we can build for you", "Design & Branding", "Development", "Enterprise Engineering", "Ai & Automation", "SOLUTION", "Ready-made packages", "Free Start", "AI-Business Card", "business automation", "Enterprise: Custom", "CONTACTS", "Get in touch and find us", "☀️ Light", "Accessibility", "CASE STUDY", "We are building digital identities", "From strategy to launch", "Brand Identity / Presentations", "Business card design", "Flyer design", "Web design", "Motion design", "more", "Custom front-end", "Responsive Layout", "Motion & UI Animation", "SEO Setup", "Easy Publishing", "SEO optimization", "Custom back-end & Admin Panels", "DNS setup and security", "API Integrations", "CMS", "AI agents", "Automation process", "Chatbot", "Voice assistance", "Your business works more efficiently when processes run automatically", "We implement AI agents and automation based on", "n8n", "LET'S TALK...", "SOLUTIONS", "Clear pricing models for different types of collaboration", "Hosting:", "Stack:", "HTML5 / CSS3 / JavaScript (ES6+)", "Subscription:", "199₪/mo.", "Get a start", "* mandatory 12-month subscription", "WordPress, Elementor Pro", "AI:", "Integration of a ready-made chatbot for recording and answering FAQs", "350₪/mo.", "Next.js, Payload, PostgreSQL", "Automation:", "n8n (integration with your CRM system, WhatsApp, and newsletters)", "Training:", "Personal workshop for the team (2-3 hours)", "650₪/mo.", "* Available in 12 installments", "from", "React, Java Spring Boot, Cloudflare, custom AI agents", "Security & Infrastructure:", "Cloudflare WAF, DDoS protection, Zero Trust access", "Support:", "24/7 monitoring, DevOps, big data work", "2500₪/mo.", "FAQ", "Quick answers to the questions we get most often before a project starts.", "What is Erythro.ai?", "Erythro.ai is an international B2B digital agency specializing in premium web design, custom software development, branding, and end-to-end AI-powered business process automation. We combine the aesthetics of \"quiet luxury\" with engineering precision and a robust server architecture.", "How long does it take to launch a project?", "Timeline depends on scope: a landing page usually takes a few weeks, while a CMS site with integrations and motion needs more time. After the brief, we provide a clear roadmap and milestones.", "Do you only handle design, or can you deliver everything end-to-end?", "We can cover the full cycle: strategy, design, development, CMS, baseline SEO, motion, and launch. When needed, we also add branding, AI automation, and ongoing support.", "Will we be able to edit the content ourselves later?", "Yes. We build editor-friendly structure and admin tooling, so your team can update copy, imagery, case studies, services, and SEO fields without a developer.", "Do you take AI and automation projects too?", "Yes. In addition to websites, we build AI agents, n8n automations, CRM-connected flows, chat, and voice experiences when they create real business value.", "How does a chatbot manage a website?", "Using n8n scripts and the Payload CMS open REST API, your administrator or manager can publish news, update services, and edit content directly from Telegram or Slack by sending natural language commands to the bot.", "Do your solutions comply with IL and EU legal standards?", "Yes. All Erythro.ai web products, database architecture, and AI solutions are designed in strict compliance with Israeli and European Union regulatory requirements:", "Accessibility (Israel):", "Full compliance with the national standard IS 5568 (WCAG 2.1 AA), protecting your business from legal risks and fines.", "Artificial Intelligence (EU):", "Strict compliance with the EU AI Act when implementing AI agents. We ensure algorithm transparency, risk classification, ethical data processing, and personal data protection (GDPR compliance) for clients operating internationally.", "Database Security and Privacy (Israel):", "Architecture design taking into account Amendment No. 13 to the Privacy Protection Act and the Data Security Regulations.", "We eliminate the need for standard B2B businesses to register databases, while fully addressing legal requirements:", "We implement cryptographic protection and end-to-end encryption of backups (BACKUP_ENCRYPTION_KEY).", "We prepare the necessary legal documents for the website (Privacy Policy, Terms of Use) and an internal Database Definition Document (DBD), which describes the rules for access and data storage.", "You have a project idea?", "Let's talk about it!", "Company", "case studies", "services", "solutions", "Contact Info", "email:", "team@erythro.ai", "phone:", "Location:", "Eilat, Israel", "Copyright © 2026. All rights reserved", "Privacy", "Terms & conditions", "Cookie Settings", "Top", "Scroll", "Accessibility Controls", "Bigger Text", "Dyslexia Friendly", "High Contrast", "Monochrome", "Highlight Links", "Pause Animations", "Text Spacing", "Big Cursor", "Keyboard Navigation", "Screen Reader", "Accessibility Statement", "Reset Settings", "Powered by Erythro.ai", "We use essential cookies for language and site preferences. If you accept, we also load Google Analytics and Vercel Web Analytics to measure site usage.", "Privacy Policy", "Decline", "Accept" ],
+      "spelling_issues" : [ {
+        "text_snippet" : "business automation",
+        "message" : "This sentence does not start with an uppercase letter.",
+        "matched_string" : "business",
+        "replacements" : [ "Business" ]
+      }, {
+        "text_snippet" : "case studies",
+        "message" : "This sentence does not start with an uppercase letter.",
+        "matched_string" : "case",
+        "replacements" : [ "Case" ]
+      }, {
+        "text_snippet" : "email:",
+        "message" : "This sentence does not start with an uppercase letter.",
+        "matched_string" : "email",
+        "replacements" : [ "Email" ]
+      }, {
+        "text_snippet" : "phone:",
+        "message" : "This sentence does not start with an uppercase letter.",
+        "matched_string" : "phone",
+        "replacements" : [ "Phone" ]
+      }, {
+        "text_snippet" : "We use essential cookies for language and site preferences. If you accept, we also load Google Analytics and Vercel Web Analytics to measure site usage.",
+        "message" : "Possible spelling mistake found.",
+        "matched_string" : "Vercel",
+        "replacements" : [ "Verse", "Vessel", "Kernel" ]
+      } ],
       "console_logs" : [ {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/21350d82a1f187e9-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+        "type" : "error",
+        "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
         "location" : "https://erythro.ai/:0:0",
         "locale" : "en"
       }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/739c2d8941231bb4-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+        "type" : "error",
+        "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
         "location" : "https://erythro.ai/:0:0",
         "locale" : "en"
       }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/ad8a7e2c3c2c120b-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "en"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/ec516af01d950ed6-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "en"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/8e9860b6e62d6359-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "en"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/d2e3c073bbb3955e-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "en"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "en"
-      }, {
-        "type" : "warning",
-        "text" : "Couldn't load preload assets:  Error: Preload assets timed out.\n    at https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:12:294147",
-        "location" : "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:11:446764",
+        "type" : "error",
+        "text" : "Refused to load the script 'https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
+        "location" : ":8:0",
         "locale" : "en"
       } ],
-      "uncaught_page_errors" : [ ]
+      "uncaught_page_errors" : [ ],
+      "rtl_audit" : {
+        "htmlDir" : "ltr",
+        "bodyDir" : null,
+        "computedDirection" : "ltr",
+        "isRtlDeclared" : false,
+        "h1TextAlign" : "center"
+      },
+      "seo_assets" : {
+        "favicon" : "/images/favicon/favicon.ico",
+        "appleTouchIcon" : "/images/favicon/apple-touch-icon.png",
+        "hreflangs" : [ ],
+        "viewportMeta" : "width=device-width, initial-scale=1"
+      },
+      "lead_capture" : {
+        "formsCount" : 1,
+        "forms" : [ {
+          "action" : null,
+          "method" : "get",
+          "fieldsCount" : 5,
+          "hasEmailField" : true,
+          "hasPhoneField" : true,
+          "hasNameField" : true,
+          "hasSubmitButton" : true,
+          "hasHiddenTrap" : false
+        } ],
+        "antiSpam" : {
+          "isProtected" : false,
+          "providers" : [ ]
+        },
+        "hasChatWidget" : false,
+        "chatWidgetSignature" : null,
+        "messengerLinks" : [ "https://wa.me/972505308305" ],
+        "hasInstantContactChannel" : true,
+        "openedFromTrigger" : true,
+        "triggerLabel" : "open contact form"
+      },
+      "mobile_layout_audit" : {
+        "device" : "iPhone SE (375x667, mobile user agent)",
+        "viewport" : "375x667",
+        "direction" : "ltr",
+        "documentScrollWidth" : 375,
+        "overflowPx" : 0,
+        "hasHorizontalOverflow" : false,
+        "clippedOffscreenElements" : 172,
+        "offenders" : [ ]
+      }
     },
     "ru" : {
       "seo" : {
@@ -274,71 +450,113 @@
         "description" : "Erythro.ai — цифровое агентство: высокопроизводительные сайты, брендинг и AI-автоматизация бизнес-процессов. От стратегии до запуска.",
         "ogTitle" : "Erythro.ai — цифровое агентство",
         "ogDescription" : "Erythro.ai — цифровое агентство: высокопроизводительные сайты, брендинг и AI-автоматизация бизнес-процессов. От стратегии до запуска.",
+        "ogImage" : "https://wgw9moyqjdjcaq9l.public.blob.vercel-storage.com/Og.jpg",
         "canonical" : "https://erythro.ai",
-        "htmlLang" : "ru"
+        "htmlLang" : "ru",
+        "dir" : "ltr",
+        "h1_count" : 0,
+        "h1_list" : [ ],
+        "h2_count" : 7,
+        "h3_count" : 4
       },
-      "heading_hierarchy_issues" : [ ],
-      "dom_a11y_issues" : {
-        "images_missing_alt_count" : 0,
-        "images_missing_alt_samples" : [ ],
-        "interactive_missing_labels_count" : 0,
-        "interactive_missing_labels_samples" : [ ]
-      },
+      "heading_hierarchy_issues" : [ "Отсутствует тег <h1> на странице" ],
+      "dom_a11y_issues" : [ "Обнаружено 1 изображений без атрибута alt" ],
       "axe_wcag_violations" : [ ],
-      "extracted_texts" : [ "Перейти к основному содержимому", "digital agency", "ИНЖЕНЕРНОЕ AI-ПРОЕКТИРОВАНИЕ", "Автоматизируем бизнес-процессы с помощью передовых ИИ-систем.", "ПОДРОБНЕЕ", "Erythro.ai — цифровое агентство", "Открыть меню", "МЕНЮ", "ГЛАВНАЯ\nЗнакомство с агентством", "ГЛАВНАЯ", "Знакомство с агентством", "НАШИ РАБОТЫ\nСмотреть избранные работы", "НАШИ РАБОТЫ", "Смотреть избранные работы", "УСЛУГИ\nЧто мы можем сделать для вас\nДИЗАЙН И БРЕНДИНГ\nРАЗРАБОТКА\nИНЖИНИРИНГ\nИИ И АВТОМАТИЗАЦИЯ", "УСЛУГИ\nЧто мы можем сделать для вас", "УСЛУГИ", "Что мы можем сделать для вас", "ДИЗАЙН И БРЕНДИНГ", "РАЗРАБОТКА", "ИНЖИНИРИНГ", "ИИ И АВТОМАТИЗАЦИЯ", "РЕШЕНИЯ\nГотовые пакеты решений\nБЕСПЛАТНЫЙ СТАРТ\nAI-ВИЗИТКА\nБИЗНЕС-АВТОМАТИЗАЦИЯ\nКОРПОРАТИВНЫЙ ТАРИФ", "РЕШЕНИЯ\nГотовые пакеты решений", "РЕШЕНИЯ", "Готовые пакеты решений", "БЕСПЛАТНЫЙ СТАРТ", "AI-ВИЗИТКА", "БИЗНЕС-АВТОМАТИЗАЦИЯ", "КОРПОРАТИВНЫЙ ТАРИФ", "КОНТАКТЫ\nСвязаться с нами", "КОНТАКТЫ", "Связаться с нами", "+972 50 931 27 46", "Facebook", "TikTok", "☀️ Light", "ДОСТУПНОСТЬ", "Мы создаем цифровые идентичности", "Смотреть все проекты", "СМОТРЕТЬ ВСЕ ПРОЕКТЫ", ">\n>", "От стратегии до запуска", "Дизайн и брендинг", "Бренд-айдентика / Презентации", "Визитки", "Флаеры", "Веб-дизайн", "Моушн-дизайн", "подробнее", "Разработка", "Индивидуальный фронтенд", "Адаптивная верстка", "Моушн и анимация интерфейса", "Настройка SEO", "Легкая публикация", "Инжиниринг", "SEO-оптимизация", "Кастомный бэкенд и админ-панели", "Настройка DNS и безопасность", "Интеграция API", "CMS", "ИИ и автоматизация", "ИИ-агенты", "Автоматизация процессов", "Чат-боты", "Голосовые ассистенты", "Ваш бизнес работает эффективнее, когда процессы выполняются автоматически", "Мы внедряем ИИ-агентов и автоматизацию на базе", "n8n", "ОБСУДИТЬ...", "Прозрачные модели ценообразования для разных форматов сотрудничества", "₪ 0*", "Хостинг: 0₪", "Хостинг:", "Стек: HTML5 / CSS3 / JavaScript (ES6+)", "Стек:", "Подписка: 199₪/мес", "Подписка:", "НАЧАТЬ СЕЙЧАС", "* при условии подписки на 12 месяцев", "₪ 5 000", "5 000", "Стек: WordPress, Elementor Pro", "AI: Интеграция готового чат-бота для записи и ответов на FAQ", "AI:", "Подписка: 350₪/мес", "₪ 18 000", "18 000", "₪ 14 999*", "14 999", "Стек: Next.js, Payload, PostgreSQL", "Автоматизация: n8n (интеграция с вашей CRM-системой, WhatsApp и рассылками)", "Автоматизация:", "Обучение: Индивидуальный семинар для команды (2-3 часа)", "Обучение:", "Подписка: 650₪/мес", "* возможна оплата в 12 платежей", "₪ 70 000*", "70 000", "Стек: React, Java Spring Boot, Cloudflare, кастомные ИИ-агенты.", "Безопасность: Cloudflare WAF, защита от DDoS-атак, Zero Trust access", "Безопасность:", "Поддержка: 24/7 мониторинг, DevOps, работа с big data.", "Поддержка:", "Подписка: 2500₪/мес", "ВОПРОСЫ И ОТВЕТЫ", "Коротко отвечаем на частые вопросы перед стартом проекта.", "ЧТО ПРЕДСТАВЛЯЕТ СОБОЙ АГЕНТСТВО ERYTHRO.AI?", "Erythro.ai — это международное цифровое B2B-агентство, специализирующееся на проектировании премиальных веб-решений, разработке кастомного ПО, брендинге и сквозной ИИ-автоматизации бизнес-процессов. Мы объединяем эстетику «тихой роскоши» с инженерной точностью и отказоустойчивой серверной архитектурой.", "СКОЛЬКО ВРЕМЕНИ ЗАНИМАЕТ ЗАПУСК ПРОЕКТА?", "Срок зависит от задачи: лендинг обычно занимает несколько недель, а сайт с CMS, интеграциями и анимацией требует больше времени. После брифа мы даем понятный план и этапы.", "РАБОТАЕТЕ ЛИ ВЫ ТОЛЬКО С ДИЗАЙНОМ, ИЛИ МОЖЕТЕ СДЕЛАТЬ ВСЕ ПОД КЛЮЧ?", "Мы можем закрыть весь цикл: стратегия, дизайн, разработка, CMS, базовое SEO, анимации и запуск. При необходимости подключаем брендинг, AI-автоматизацию и дальнейшую поддержку.", "МОЖНО ЛИ ПОТОМ САМОСТОЯТЕЛЬНО РЕДАКТИРОВАТЬ КОНТЕНТ?", "Да. Мы закладываем editor-friendly структуру и админку, чтобы вы могли менять тексты, изображения, кейсы, услуги и SEO-поля без разработчика.", "БЕРЕТЕ ЛИ ВЫ ПРОЕКТЫ С AI И АВТОМАТИЗАЦИЕЙ?", "Да. Мы делаем не только сайты, но и AI-агентов, n8n-автоматизацию, формы, CRM-связки, чат- и voice-сценарии, если это полезно для бизнеса.", "КАК ПРОИСХОДИТ УПРАВЛЕНИЕ САЙТОМ С ПОМОЩЬЮ ЧАТ-БОТА?", "С помощью сценариев n8n и открытого REST API Payload CMS ваш администратор или менеджер может публиковать новости, обновлять услуги и редактировать контент прямо из Telegram или Slack, отправляя боту команды на естественном языке.", "СООТВЕТСТВУЮТ ЛИ ВАШИ РЕШЕНИЯ ЗАКОНОДАТЕЛЬНЫМ СТАНДАРТАМ ИЗРАИЛЯ И ЕВРОСОЮЗА (EU)?", "Да. Все веб-продукты, архитектура баз данных и ИИ-решения Erythro.ai проектируются в строгом соответствии с нормативными требованиями Израиля и Европейского союза:", "Доступность (Израиль): Полное соблюдение государственного стандарта IS 5568 (WCAG 2.1 AA), защищающее ваш бизнес от юридических рисков и штрафов.", "Искусственный интеллект (Евросоюз): Строгое соответствие Закону об искусственном интеллекте (EU AI Act) при внедрении AI-агентов. Мы обеспечиваем прозрачность алгоритмов, классификацию уровней риска, этичность обработки информации и защиту персональных данных (GDPR compliance) для клиентов, работающих на международном рынке.", "Безопасность баз данных и Privacy (Израиль): Проектирование архитектуры с учетом Поправки №13 к Закону о защите конфиденциальности и Регламента безопасности данных (Data Security Regulations).", "Мы избавляем стандартный B2B-бизнес от необходимости лишней регистрации БД, при этом полностью закрываем юридические требования:", "Внедряем криптографическую защиту и сквозное шифрование резервных копий (BACKUP_ENCRYPTION_KEY).", "Готовим необходимые юридические документы для сайта (Privacy Policy, Terms of Use) и внутренний Документ определения базы данных (מסמך הגדרת המאגר), описывающий регламенты доступа и хранения данных.", "Есть идея для проекта?\nДавайте обсудим!", "Компания", "Наши Работы", "Услуги", "Решения", "Контакты", "EMAIL: erythro.ai@gmail.com", "EMAIL:", "erythro.ai@gmail.com", "ТЕЛЕФОН: +972 50 931 27 46", "ТЕЛЕФОН:", "АДРЕС: Эйлат, Израиль", "АДРЕС:", "COPYRIGHT © 2026. ВСЕ ПРАВА ЗАЩИЩЕНЫ", "КОНФИДЕНЦИАЛЬНОСТЬ", "УСЛОВИЯ ИСПОЛЬЗОВАНИЯ", "НАСТРОЙКИ COOKIE", "Наверх", "Вниз, следующий раздел", "Открыть контактную форму", "WhatsApp", "НАСТРОЙКИ ДОСТУПНОСТИ", "Закрыть панель доступности", "КРУПНЫЙ ШРИФТ", "ДЛЯ ДИСЛЕКСИКОВ", "ВЫСОКИЙ КОНТРАСТ", "МОНОХРОМНЫЙ РЕЖИМ", "ПОДСВЕТКА ССЫЛОК", "ОТКЛЮЧИТЬ АНИМАЦИИ", "ИНТЕРВАЛ ТЕКСТА", "КРУПНЫЙ КУРСОР", "НАВИГАЦИЯ С КЛАВИАТУРЫ", "ЭКРАННЫЙ ДИКТОР", "Заявление о доступности", "СБРОСИТЬ НАСТРОЙКИ", "На нашем сайте используются cookies, чтобы запомнить выбранный язык и улучшить ваш опыт. Конфиденциальность", "Конфиденциальность", "ОТКЛОНИТЬ", "ПРИНЯТЬ" ],
+      "extracted_texts" : [ "Перейти к основному содержимому", "digital agency", "ИНЖЕНЕРНОЕ AI-ПРОЕКТИРОВАНИЕ", "ПРОЕКТИРУЕМ БУДУЩЕЕ", "Автоматизируем бизнес-процессы с помощью передовых ИИ-систем.", "ПОДРОБНЕЕ", "Меню", "Главная", "Знакомство с агентством", "Наши Работы", "Смотреть избранные работы", "УСЛУГИ", "Что мы можем сделать для вас", "Дизайн и брендинг", "Разработка", "Инжиниринг", "ИИ и автоматизация", "РЕШЕНИЯ", "Готовые пакеты решений", "Бесплатный старт", "AI-визитка", "бизнес-автоматизация", "Корпоративный тариф", "КОНТАКТЫ", "Связаться с нами", "☀️ Light", "Доступность", "Мы создаем цифровые идентичности", "От стратегии до запуска", "Бренд-айдентика / Презентации", "Визитки", "Флаеры", "Веб-дизайн", "Моушн-дизайн", "подробнее", "Индивидуальный фронтенд", "Адаптивная верстка", "Моушн и анимация интерфейса", "Настройка SEO", "Легкая публикация", "SEO-оптимизация", "Кастомный бэкенд и админ-панели", "Настройка DNS и безопасность", "Интеграция API", "CMS", "ИИ-агенты", "Автоматизация процессов", "Чат-боты", "Голосовые ассистенты", "Ваш бизнес работает эффективнее, когда процессы выполняются автоматически", "Мы внедряем ИИ-агентов и автоматизацию на базе", "n8n", "ОБСУДИТЬ...", "Прозрачные модели ценообразования для разных форматов сотрудничества", "Хостинг:", "Стек:", "HTML5 / CSS3 / JavaScript (ES6+)", "Подписка:", "199₪/мес", "Начать сейчас", "* при условии подписки на 12 месяцев", "WordPress, Elementor Pro", "AI:", "Интеграция готового чат-бота для записи и ответов на FAQ", "350₪/мес", "Next.js, Payload, PostgreSQL", "Автоматизация:", "n8n (интеграция с вашей CRM-системой, WhatsApp и рассылками)", "Обучение:", "Индивидуальный семинар для команды (2-3 часа)", "650₪/мес", "* возможна оплата в 12 платежей", "React, Java Spring Boot, Cloudflare, кастомные ИИ-агенты.", "Безопасность:", "Cloudflare WAF, защита от DDoS-атак, Zero Trust access", "Поддержка:", "24/7 мониторинг, DevOps, работа с big data.", "2500₪/мес", "ВОПРОСЫ И ОТВЕТЫ", "Коротко отвечаем на частые вопросы перед стартом проекта.", "Что представляет собой агентство Erythro.ai?", "Erythro.ai — это международное цифровое B2B-агентство, специализирующееся на проектировании премиальных веб-решений, разработке кастомного ПО, брендинге и сквозной ИИ-автоматизации бизнес-процессов. Мы объединяем эстетику «тихой роскоши» с инженерной точностью и отказоустойчивой серверной архитектурой.", "Сколько времени занимает запуск проекта?", "Срок зависит от задачи: лендинг обычно занимает несколько недель, а сайт с CMS, интеграциями и анимацией требует больше времени. После брифа мы даем понятный план и этапы.", "Работаете ли вы только с дизайном, или можете сделать все под ключ?", "Мы можем закрыть весь цикл: стратегия, дизайн, разработка, CMS, базовое SEO, анимации и запуск. При необходимости подключаем брендинг, AI-автоматизацию и дальнейшую поддержку.", "Можно ли потом самостоятельно редактировать контент?", "Да. Мы закладываем editor-friendly структуру и админку, чтобы вы могли менять тексты, изображения, кейсы, услуги и SEO-поля без разработчика.", "Берете ли вы проекты с AI и автоматизацией?", "Да. Мы делаем не только сайты, но и AI-агентов, n8n-автоматизацию, формы, CRM-связки, чат- и voice-сценарии, если это полезно для бизнеса.", "Как происходит управление сайтом с помощью чат-бота?", "С помощью сценариев n8n и открытого REST API Payload CMS ваш администратор или менеджер может публиковать новости, обновлять услуги и редактировать контент прямо из Telegram или Slack, отправляя боту команды на естественном языке.", "Соответствуют ли ваши решения законодательным стандартам Израиля и Евросоюза (EU)?", "Да. Все веб-продукты, архитектура баз данных и ИИ-решения Erythro.ai проектируются в строгом соответствии с нормативными требованиями Израиля и Европейского союза:", "Доступность (Израиль): Полное соблюдение государственного стандарта IS 5568 (WCAG 2.1 AA), защищающее ваш бизнес от юридических рисков и штрафов.", "Искусственный интеллект (Евросоюз): Строгое соответствие Закону об искусственном интеллекте (EU AI Act) при внедрении AI-агентов. Мы обеспечиваем прозрачность алгоритмов, классификацию уровней риска, этичность обработки информации и защиту персональных данных (GDPR compliance) для клиентов, работающих на международном рынке.", "Безопасность баз данных и Privacy (Израиль): Проектирование архитектуры с учетом Поправки №13 к Закону о защите конфиденциальности и Регламента безопасности данных (Data Security Regulations).", "Мы избавляем стандартный B2B-бизнес от необходимости лишней регистрации БД, при этом полностью закрываем юридические требования:", "Внедряем криптографическую защиту и сквозное шифрование резервных копий (BACKUP_ENCRYPTION_KEY).", "Готовим необходимые юридические документы для сайта (Privacy Policy, Terms of Use) и внутренний Документ определения базы данных (מסמך הגדרת המאגר), описывающий регламенты доступа и хранения данных.", "Есть идея для проекта?", "Давайте обсудим!", "Компания", "наши работы", "услуги", "решения", "Контакты", "email:", "team@erythro.ai", "телефон:", "Адрес:", "Эйлат, Израиль", "Copyright © 2026. Все права защищены", "Конфиденциальность", "Условия использования", "Настройки Cookie", "Наверх", "Вниз", "Настройки доступности", "Крупный шрифт", "Для дислексиков", "Высокий контраст", "Монохромный режим", "Подсветка ссылок", "Отключить анимации", "Интервал текста", "Крупный курсор", "Навигация с клавиатуры", "Экранный диктор", "Заявление о доступности", "Сбросить настройки", "Создано на Erythro.ai" ],
       "spelling_issues" : [ {
-        "text_snippet" : "НАШИ РАБОТЫ\nСмотреть избранные работы",
-        "message" : "Пропущена точка или слово ошибочно написано с прописной буквы.",
-        "matched_string" : "Смотреть",
+        "text_snippet" : "бизнес-автоматизация",
+        "message" : "Возможно найдена орфографическая ошибка.",
+        "matched_string" : "бизнес-автоматизация",
         "replacements" : [ ]
       }, {
         "text_snippet" : "Да. Мы делаем не только сайты, но и AI-агентов, n8n-автоматизацию, формы, CRM-связки, чат- и voice-сценарии, если это полезно для бизнеса.",
         "message" : "Возможно найдена орфографическая ошибка.",
         "matched_string" : "чат-",
         "replacements" : [ "чуть", "чутье", "чат" ]
+      }, {
+        "text_snippet" : "наши работы",
+        "message" : "Это предложение не начинается с заглавной буквы.",
+        "matched_string" : "наши",
+        "replacements" : [ "Наши" ]
+      }, {
+        "text_snippet" : "email:",
+        "message" : "Это предложение не начинается с заглавной буквы.",
+        "matched_string" : "email",
+        "replacements" : [ "Email" ]
+      }, {
+        "text_snippet" : "телефон:",
+        "message" : "Это предложение не начинается с заглавной буквы.",
+        "matched_string" : "телефон",
+        "replacements" : [ "Телефон" ]
+      }, {
+        "text_snippet" : "Для дислексиков",
+        "message" : "Возможно найдена орфографическая ошибка.",
+        "matched_string" : "дислексиков",
+        "replacements" : [ "диалектиков", "дислексика", "дислексики" ]
       } ],
       "console_logs" : [ {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/21350d82a1f187e9-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+        "type" : "error",
+        "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
         "location" : "https://erythro.ai/:0:0",
         "locale" : "ru"
       }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/739c2d8941231bb4-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+        "type" : "error",
+        "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
         "location" : "https://erythro.ai/:0:0",
         "locale" : "ru"
       }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/ad8a7e2c3c2c120b-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "ru"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/ec516af01d950ed6-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "ru"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/8e9860b6e62d6359-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "ru"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/d2e3c073bbb3955e-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "ru"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "ru"
-      }, {
-        "type" : "warning",
-        "text" : "Couldn't load preload assets:  Error: Preload assets timed out.\n    at https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:12:294147",
-        "location" : "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:11:446764",
+        "type" : "error",
+        "text" : "Refused to load the script 'https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
+        "location" : ":8:0",
         "locale" : "ru"
       } ],
-      "uncaught_page_errors" : [ ]
+      "uncaught_page_errors" : [ ],
+      "rtl_audit" : {
+        "htmlDir" : "ltr",
+        "bodyDir" : null,
+        "computedDirection" : "ltr",
+        "isRtlDeclared" : false,
+        "h1TextAlign" : "center"
+      },
+      "seo_assets" : {
+        "favicon" : "/images/favicon/favicon.ico",
+        "appleTouchIcon" : "/images/favicon/apple-touch-icon.png",
+        "hreflangs" : [ ],
+        "viewportMeta" : "width=device-width, initial-scale=1"
+      },
+      "lead_capture" : {
+        "formsCount" : 1,
+        "forms" : [ {
+          "action" : null,
+          "method" : "get",
+          "fieldsCount" : 5,
+          "hasEmailField" : true,
+          "hasPhoneField" : true,
+          "hasNameField" : true,
+          "hasSubmitButton" : true,
+          "hasHiddenTrap" : false
+        } ],
+        "antiSpam" : {
+          "isProtected" : false,
+          "providers" : [ ]
+        },
+        "hasChatWidget" : false,
+        "chatWidgetSignature" : null,
+        "messengerLinks" : [ "https://wa.me/972505308305" ],
+        "hasInstantContactChannel" : true,
+        "openedFromTrigger" : true,
+        "triggerLabel" : "обсудить..."
+      },
+      "mobile_layout_audit" : {
+        "device" : "iPhone SE (375x667, mobile user agent)",
+        "viewport" : "375x667",
+        "direction" : "ltr",
+        "documentScrollWidth" : 375,
+        "overflowPx" : 0,
+        "hasHorizontalOverflow" : false,
+        "clippedOffscreenElements" : 172,
+        "offenders" : [ ]
+      }
     },
     "he" : {
       "seo" : {
@@ -346,70 +564,247 @@
         "description" : "Erythro.ai היא סוכנות דיגיטל לבניית אתרים מהירים, מיתוג ואוטומציה מבוססת בינה מלאכותית — מאסטרטגיה ועד השקה.",
         "ogTitle" : "Erythro.ai - סוכנות דיגיטל",
         "ogDescription" : "Erythro.ai היא סוכנות דיגיטל לבניית אתרים מהירים, מיתוג ואוטומציה מבוססת בינה מלאכותית — מאסטרטגיה ועד השקה.",
+        "ogImage" : "https://wgw9moyqjdjcaq9l.public.blob.vercel-storage.com/Og.jpg",
         "canonical" : "https://erythro.ai",
-        "htmlLang" : "he"
+        "htmlLang" : "he",
+        "dir" : "rtl",
+        "h1_count" : 0,
+        "h1_list" : [ ],
+        "h2_count" : 7,
+        "h3_count" : 4
       },
-      "heading_hierarchy_issues" : [ ],
-      "dom_a11y_issues" : {
-        "images_missing_alt_count" : 0,
-        "images_missing_alt_samples" : [ ],
-        "interactive_missing_labels_count" : 0,
-        "interactive_missing_labels_samples" : [ ]
-      },
+      "heading_hierarchy_issues" : [ "Отсутствует тег <h1> на странице" ],
+      "dom_a11y_issues" : [ "Обнаружено 2 изображений без атрибута alt" ],
       "axe_wcag_violations" : [ ],
-      "extracted_texts" : [ "דלג לתוכן המרכזי", "digital agency", "הנדסת בינה מלאכותית מדויקת", "מאוטמטים תהליכים עסקיים באמצעות מערכות AI מתקדמות", "למידע נוסף", "Erythro.ai - סוכנות דיגיטל", "פתיחת תפריט", "תפריט", "עמוד ראשי\nהכירו את הסוכנות", "עמוד ראשי", "הכירו את הסוכנות", "תיק\nצפו בעבודות נבחרות", "תיק", "צפו בעבודות נבחרות", "שירותים\nמה נוכל לבנות בשבילכם\nעיצוב ומיתוג\nפיתוח\nהנדסת ארגונים\nבינה מלאכותית ואוטומציה", "שירותים\nמה נוכל לבנות בשבילכם", "שירותים", "מה נוכל לבנות בשבילכם", "עיצוב ומיתוג", "פיתוח", "הנדסת ארגונים", "בינה מלאכותית ואוטומציה", "פתרונות\nחבילות מוכנות\nהתחלה חינם\nכרטיס ביקור AI\nאוטומציה עסקית\nתעריף תאגידי", "פתרונות\nחבילות מוכנות", "פתרונות", "חבילות מוכנות", "התחלה חינם", "כרטיס ביקור AI", "אוטומציה עסקית", "תעריף תאגידי", "אנשי קשר\nצרו קשר ומצאו אותנו", "אנשי קשר", "צרו קשר ומצאו אותנו", "+972 50 931 27 46", "Facebook", "TikTok", "☀️ Light", "נגישות", "מקרי מבחן", "אנחנו בונים זהויות דיגיטליות", "כל הפרויקטים", "כל הפרויקטים", ">\n>", "מאסטרטגיה להשקה", "סוכני AI", "תהליכי אוטומציה", "צ'אט בוט", "סיוע קולי", "עוד", "אופטימיזציית SEO", "ממשק ניהול וצד אחורי מותאם אישית", "הגדרת DNS ואבטחה", "אינטגרציית API", "מערכות ניהול תוכן CMS", "פרונטאנד בהתאמה אישית", "פריסה רספונסיבית", "אנימציה וממשק משתמש", "הגדרת SEO", "פרסום קל", "מיתוג ואסטרטגיה / מצגות", "כרטיס ביקור", "פליירים", "עיצוב אתרים", "עיצוב בתנועה", "העסק שלך עובד בצורה יעילה יותר כאשר תהליכים רצים אוטומטית", "אנו מטמיעים סוכני AI ואוטומציה המבוססים על", "n8n", "בואו נדבר...", "מודלים ברורים לתמחור לסוגים שונים של שיתוף פעולה", "₪ 0*", "אירוח: 0₪", "אירוח:", "סטאק: HTML+CSS+JS (סטטי)", "סטאק:", "מנוי: 199 ₪ לחודש", "מנוי:", "להתחיל עכשיו", "*בכפוף למנוי ל-12 חודשים", "₪ 5 000", "5 000", "סטאק: WordPress, Elementor Pro", "AI: שילוב צ'אטבוט מוכן להקלטה ומענה על שאלות נפוצות", "AI:", "מנוי: 350 ₪ לחודש", "₪ 18 000", "18 000", "₪ 14 999*", "14 999", "סטאק: Next.js, Payload, PostgreSQL", "אוטומציה: n8n (אינטגרציה עם מערכת ה-CRM שלכם, WhatsApp וניוזלטרים)", "אוטומציה:", "הדרכה: סדנה אישית לצוות (2-3 שעות)", "הדרכה:", "מנוי: 650 ₪ לחודש", "* אפשרות לתשלום ב-12 תשלומים", "₪ 70 000*", "70 000", "סטאק: React, Java Spring Boot, Cloudflare, סוכני בינה מלאכותית מותאמים אישית", "אבטחה ותשתיות: Cloudflare WAF, הגנה מפני DDoS, גישה ללא אמון", "אבטחה ותשתיות:", "תמיכה: ניטור 24/7, DevOps, עבודה עם ביג דאטה", "תמיכה:", "מנוי: 2500 ₪ לחודש", "שאלות נפוצות", "תשובות קצרות לשאלות הנפוצות לפני תחילת פרויקט.", "מהי סוכנות ERYTHRO.AI?", "Erythro.ai היא סוכנות דיגיטלית בינלאומית B2B המתמחה בעיצוב פתרונות אינטרנט מובחרים, פיתוח תוכנה בהתאמה אישית, מיתוג ואוטומציה של תהליכים עסקיים של AI מקצה לקצה. אנו משלבים את האסתטיקה של \"יוקרה שקטה\" עם דיוק הנדסי וארכיטקטורת שרתים עמידה בפני תקלות.", "כמה זמן לוקח להשיק פרויקט?", "משך העבודה תלוי בהיקף: דף נחיתה לוקח בדרך כלל כמה שבועות, ואתר עם CMS, אינטגרציות ואנימציות דורש יותר זמן. אחרי הבריף אנחנו נותנים תוכנית עבודה ברורה ושלבים מסודרים.", "אתם עובדים רק על עיצוב או גם על ביצוע מלא?", "אנחנו יכולים ללוות את כל התהליך: אסטרטגיה, עיצוב, פיתוח, CMS, SEO בסיסי, אנימציות והשקה. לפי הצורך נוסיף גם מיתוג, אוטומציה מבוססת AI ותמיכה בהמשך.", "אפשר לערוך את התוכן לבד אחר כך?", "כן. אנחנו בונים מבנה אדיטורי נוח וממשק ניהול שמאפשר לעדכן טקסטים, תמונות, עבודות, שירותים ושדות SEO בלי לפנות למפתח.", "אתם עושים גם פרויקטים עם AI ואוטומציה?", "כן. מעבר לאתרים, אנחנו בונים סוכני AI, אוטומציות n8n, חיבורים ל-CRM, תהליכי צ׳אט ו-voice כאשר זה תורם ישירות לעסק.", "איך צ'אטבוט מנהל אתר אינטרנט?", "באמצעות סקריפטים של n8n ו-REST API פתוח של Payload CMS, מנהל המערכת או המנהל שלך יכולים לפרסם חדשות, לעדכן שירותים ולערוך תוכן ישירות מטלגרם או סלאק על ידי שליחת פקודות בשפה טבעית לבוט.", "האם הפתרונות שלכם עומדים בתקנים החוקיים של ישראל והאיחוד האירופי?", "כן. כל מוצרי האינטרנט של Erythro.ai, ארכיטקטורת מסדי הנתונים ופתרונות הבינה המלאכותית מתוכננים בהתאמה קפדנית לדרישות הרגולטוריות של ישראל והאיחוד האירופי:", "נגישות (ישראל): עמידה מלאה בתקן הלאומי IS 5568 (WCAG 2.1 AA), המגן על העסק שלך מפני סיכונים משפטיים וקנסות.", "בינה מלאכותית (EU): ציות קפדני לחוק ה-AI של האיחוד האירופי בעת יישום סוכני AI. אנו מבטיחים שקיפות אלגוריתם, סיווג סיכונים, עיבוד נתונים אתי והגנה על נתונים אישיים (תאימות GDPR) עבור לקוחות הפועלים בעולם.", "אבטחה ופרטיות מאגרי מידע (ישראל): תכנון אדריכלות תוך התחשבות בתיקון מס' 13 לחוק הגנת הפרטיות ולתקנות אבטחת המידע.", "אנו מבטלים את הצורך לעסקים B2B סטנדרטיים לרשום מאגרי מידע, תוך התייחסות מלאה לדרישות החוק:", "אנו מיישמים הגנה קריפטוגרפית והצפנה מקצה לקצה של גיבויים (BACKUP_ENCRYPTION_KEY).", "אנו מכינים את המסמכים המשפטיים הדרושים לאתר (מדיניות פרטיות, תנאי שימוש) ומסמך פנימי להגדרת מסד נתונים (DBD), המתאר את כללי הגישה ואחסון הנתונים.", "יש לך רעיון לפרויקט?\nבואו נדבר על זה!", "חברה", "פרטי קשר", "אימייל: erythro.ai@gmail.com", "אימייל:", "erythro.ai@gmail.com", "טלפון: +972 50 931 27 46", "טלפון:", "מיקום: אילת, ישראל", "מיקום:", "COPYRIGHT © 2026. כל הזכויות שמורות", "פרטיות", "תנאים והגבלות", "הגדרות COOKIE", "חזרה לראש העמוד", "למטה, למדור הבא", "פתיחת טופס יצירת קשר", "WhatsApp", "הגדרות נגישות", "סגירת חלונית הנגישות", "גופן גדול", "מותאם לדיסלקציה", "ניגודיות גבוהה", "מונוכרום", "הדגשת קישורים", "חסימת אנימציות", "מרווח טקסט", "סמן גדול", "ניווט במקלדת", "קורא מסך", "הצהרת נגישות", "איפוס הגדרות", "אנו משתמשים בעוגיות באתר שלנו כדי לזכור את העדפת השפה שלך ולשפר את החוויה. מדיניות פרטיות", "מדיניות פרטיות", "דחייה", "אישור" ],
+      "extracted_texts" : [ "דלג לתוכן המרכזי", "digital agency", "הנדסת בינה מלאכותית מדויקת", "אוטומציה של בינה מלאכותית", "מאוטמטים תהליכים עסקיים באמצעות מערכות AI מתקדמות", "למידע נוסף", "תפריט", "עמוד ראשי", "הכירו את הסוכנות", "תיק", "צפו בעבודות נבחרות", "שירותים", "מה נוכל לבנות בשבילכם", "עיצוב ומיתוג", "פיתוח", "הנדסת ארגונים", "בינה מלאכותית ואוטומציה", "פתרונות", "חבילות מוכנות", "התחלה חינם", "כרטיס ביקור AI", "אוטומציה עסקית", "תעריף תאגידי", "אנשי קשר", "צרו קשר ומצאו אותנו", "☀️ Light", "נגישות", "מקרי מבחן", "אנחנו בונים זהויות דיגיטליות", "מאסטרטגיה להשקה", "סוכני AI", "תהליכי אוטומציה", "צ'אט בוט", "סיוע קולי", "עוד", "אופטימיזציית SEO", "ממשק ניהול וצד אחורי מותאם אישית", "הגדרת DNS ואבטחה", "אינטגרציית API", "מערכות ניהול תוכן CMS", "פרונטאנד בהתאמה אישית", "פריסה רספונסיבית", "אנימציה וממשק משתמש", "הגדרת SEO", "פרסום קל", "מיתוג ואסטרטגיה / מצגות", "כרטיס ביקור", "פליירים", "עיצוב אתרים", "עיצוב בתנועה", "העסק שלך עובד בצורה יעילה יותר כאשר תהליכים רצים אוטומטית", "אנו מטמיעים סוכני AI ואוטומציה המבוססים על", "n8n", "בואו נדבר...", "מודלים ברורים לתמחור לסוגים שונים של שיתוף פעולה", "אירוח:", "סטאק:", "HTML+CSS+JS (סטטי)", "מנוי:", "199 ₪ לחודש", "להתחיל עכשיו", "*בכפוף למנוי ל-12 חודשים", "WordPress, Elementor Pro", "AI:", "שילוב צ'אטבוט מוכן להקלטה ומענה על שאלות נפוצות", "350 ₪ לחודש", "Next.js, Payload, PostgreSQL", "אוטומציה:", "n8n (אינטגרציה עם מערכת ה-CRM שלכם, WhatsApp וניוזלטרים)", "הדרכה:", "סדנה אישית לצוות (2-3 שעות)", "650 ₪ לחודש", "* אפשרות לתשלום ב-12 תשלומים", "React, Java Spring Boot, Cloudflare, סוכני בינה מלאכותית מותאמים אישית", "אבטחה ותשתיות:", "Cloudflare WAF, הגנה מפני DDoS, גישה ללא אמון", "תמיכה:", "ניטור 24/7, DevOps, עבודה עם ביג דאטה", "2500 ₪ לחודש", "שאלות נפוצות", "תשובות קצרות לשאלות הנפוצות לפני תחילת פרויקט.", "מהי סוכנות Erythro.ai?", "Erythro.ai היא סוכנות דיגיטלית בינלאומית B2B המתמחה בעיצוב פתרונות אינטרנט מובחרים, פיתוח תוכנה בהתאמה אישית, מיתוג ואוטומציה של תהליכים עסקיים של AI מקצה לקצה. אנו משלבים את האסתטיקה של \"יוקרה שקטה\" עם דיוק הנדסי וארכיטקטורת שרתים עמידה בפני תקלות.", "כמה זמן לוקח להשיק פרויקט?", "משך העבודה תלוי בהיקף: דף נחיתה לוקח בדרך כלל כמה שבועות, ואתר עם CMS, אינטגרציות ואנימציות דורש יותר זמן. אחרי הבריף אנחנו נותנים תוכנית עבודה ברורה ושלבים מסודרים.", "אתם עובדים רק על עיצוב או גם על ביצוע מלא?", "אנחנו יכולים ללוות את כל התהליך: אסטרטגיה, עיצוב, פיתוח, CMS, SEO בסיסי, אנימציות והשקה. לפי הצורך נוסיף גם מיתוג, אוטומציה מבוססת AI ותמיכה בהמשך.", "אפשר לערוך את התוכן לבד אחר כך?", "כן. אנחנו בונים מבנה אדיטורי נוח וממשק ניהול שמאפשר לעדכן טקסטים, תמונות, עבודות, שירותים ושדות SEO בלי לפנות למפתח.", "אתם עושים גם פרויקטים עם AI ואוטומציה?", "כן. מעבר לאתרים, אנחנו בונים סוכני AI, אוטומציות n8n, חיבורים ל-CRM, תהליכי צ׳אט ו-voice כאשר זה תורם ישירות לעסק.", "איך צ'אטבוט מנהל אתר אינטרנט?", "באמצעות סקריפטים של n8n ו-REST API פתוח של Payload CMS, מנהל המערכת או המנהל שלך יכולים לפרסם חדשות, לעדכן שירותים ולערוך תוכן ישירות מטלגרם או סלאק על ידי שליחת פקודות בשפה טבעית לבוט.", "האם הפתרונות שלכם עומדים בתקנים החוקיים של ישראל והאיחוד האירופי?", "כן. כל מוצרי האינטרנט של Erythro.ai, ארכיטקטורת מסדי הנתונים ופתרונות הבינה המלאכותית מתוכננים בהתאמה קפדנית לדרישות הרגולטוריות של ישראל והאיחוד האירופי:", "נגישות (ישראל): עמידה מלאה בתקן הלאומי IS 5568 (WCAG 2.1 AA), המגן על העסק שלך מפני סיכונים משפטיים וקנסות.", "בינה מלאכותית (EU): ציות קפדני לחוק ה-AI של האיחוד האירופי בעת יישום סוכני AI. אנו מבטיחים שקיפות אלגוריתם, סיווג סיכונים, עיבוד נתונים אתי והגנה על נתונים אישיים (תאימות GDPR) עבור לקוחות הפועלים בעולם.", "אבטחה ופרטיות מאגרי מידע (ישראל): תכנון אדריכלות תוך התחשבות בתיקון מס' 13 לחוק הגנת הפרטיות ולתקנות אבטחת המידע.", "אנו מבטלים את הצורך לעסקים B2B סטנדרטיים לרשום מאגרי מידע, תוך התייחסות מלאה לדרישות החוק:", "אנו מיישמים הגנה קריפטוגרפית והצפנה מקצה לקצה של גיבויים (BACKUP_ENCRYPTION_KEY).", "אנו מכינים את המסמכים המשפטיים הדרושים לאתר (מדיניות פרטיות, תנאי שימוש) ומסמך פנימי להגדרת מסד נתונים (DBD), המתאר את כללי הגישה ואחסון הנתונים.", "יש לך רעיון לפרויקט?", "בואו נדבר על זה!", "חברה", "פרטי קשר", "אימייל:", "team@erythro.ai", "טלפון:", "מיקום:", "אילת, ישראל", "Copyright © 2026. כל הזכויות שמורות", "פרטיות", "תנאים והגבלות", "הגדרות Cookie", "למעלה", "למטה", "הגדרות נגישות", "גופן גדול", "מותאם לדיסלקציה", "ניגודיות גבוהה", "מונוכרום", "הדגשת קישורים", "חסימת אנימציות", "מרווח טקסט", "סמן גדול", "ניווט במקלדת", "קורא מסך", "הצהרת נגישות", "איפוס הגדרות", "מופעל על ידי Erythro.ai", "אנו משתמשים ב־Cookie חיוניים לשפה ולהעדפות האתר. אם תאשרו, נטען גם את Google Analytics ואת Vercel Web Analytics כדי למדוד את השימוש באתר.", "מדיניות פרטיות", "דחייה", "אישור" ],
       "spelling_issues" : [ ],
       "console_logs" : [ {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/21350d82a1f187e9-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+        "type" : "error",
+        "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
         "location" : "https://erythro.ai/:0:0",
         "locale" : "he"
       }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/739c2d8941231bb4-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
+        "type" : "error",
+        "text" : "Refused to load the script 'https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
         "location" : "https://erythro.ai/:0:0",
         "locale" : "he"
       }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/ad8a7e2c3c2c120b-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "he"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/ec516af01d950ed6-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "he"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/8e9860b6e62d6359-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "he"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/d2e3c073bbb3955e-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "he"
-      }, {
-        "type" : "warning",
-        "text" : "The resource https://erythro.ai/_next/static/media/e4af272ccee01ff0-s.p.woff2?dpl=dpl_AbYPhHgZNK3TF4YvaBn1BNgaT71S was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally.",
-        "location" : "https://erythro.ai/:0:0",
-        "locale" : "he"
-      }, {
-        "type" : "warning",
-        "text" : "Couldn't load preload assets:  Error: Preload assets timed out.\n    at https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:12:294147",
-        "location" : "https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js:11:446764",
+        "type" : "error",
+        "text" : "Refused to load the script 'https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.10.2/axe.min.js' because it violates the following Content Security Policy directive: \"script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com\". Note that 'script-src-elem' was not explicitly set, so 'script-src' is used as a fallback.\n",
+        "location" : ":8:0",
         "locale" : "he"
       } ],
-      "uncaught_page_errors" : [ ]
+      "uncaught_page_errors" : [ ],
+      "rtl_audit" : {
+        "htmlDir" : "rtl",
+        "bodyDir" : null,
+        "computedDirection" : "rtl",
+        "isRtlDeclared" : true,
+        "h1TextAlign" : "center"
+      },
+      "seo_assets" : {
+        "favicon" : "/images/favicon/favicon.ico",
+        "appleTouchIcon" : "/images/favicon/apple-touch-icon.png",
+        "hreflangs" : [ ],
+        "viewportMeta" : "width=device-width, initial-scale=1"
+      },
+      "lead_capture" : {
+        "formsCount" : 1,
+        "forms" : [ {
+          "action" : null,
+          "method" : "get",
+          "fieldsCount" : 5,
+          "hasEmailField" : true,
+          "hasPhoneField" : true,
+          "hasNameField" : true,
+          "hasSubmitButton" : true,
+          "hasHiddenTrap" : false
+        } ],
+        "antiSpam" : {
+          "isProtected" : false,
+          "providers" : [ ]
+        },
+        "hasChatWidget" : false,
+        "chatWidgetSignature" : null,
+        "messengerLinks" : [ "https://wa.me/972505308305" ],
+        "hasInstantContactChannel" : true,
+        "openedFromTrigger" : true,
+        "triggerLabel" : "בואו נדבר..."
+      },
+      "mobile_layout_audit" : {
+        "device" : "iPhone SE (375x667, mobile user agent)",
+        "viewport" : "375x2668",
+        "direction" : "rtl",
+        "documentScrollWidth" : 100374,
+        "overflowPx" : 98874,
+        "hasHorizontalOverflow" : true,
+        "clippedOffscreenElements" : 0,
+        "offenders" : [ {
+          "selector" : "header.fixed.top-0",
+          "overflowPx" : 1125,
+          "widthPx" : 1500
+        }, {
+          "selector" : "div.relative.z-[70]",
+          "overflowPx" : 1125,
+          "widthPx" : 1500
+        }, {
+          "selector" : "button.group.relative",
+          "overflowPx" : 1095,
+          "widthPx" : 77
+        }, {
+          "selector" : "span.font-sans.text-xs",
+          "overflowPx" : 1062,
+          "widthPx" : 44
+        }, {
+          "selector" : "svg",
+          "overflowPx" : 1095,
+          "widthPx" : 21
+        }, {
+          "selector" : "path",
+          "overflowPx" : 1088,
+          "widthPx" : 12
+        }, {
+          "selector" : "div.burger-menu-panel.fixed",
+          "overflowPx" : 2625,
+          "widthPx" : 1500
+        }, {
+          "selector" : "div.flex.min-h-full",
+          "overflowPx" : 2625,
+          "widthPx" : 1500
+        } ]
+      }
     }
   },
   "failed_network_requests" : [ ],
-  "timestamp" : 1786229631104,
   "allowed_exceptions" : [ {
     "id" : "EXC-001",
     "locale" : "ru",
     "context" : "Ответ FAQ про законодательные стандарты баз данных в Израиле",
     "snippet" : "מסמך הגדרת המאגר",
     "reason" : "Название юридического документа Израиля 'Документ определения базы данных' на иврите приведено преднамеренно для точного соответствия терминологии регулятора (Закон о защите конфиденциальности)."
-  } ]
+  } ],
+  "locales" : [ "en", "ru", "he" ],
+  "mobile_layout_audit" : {
+    "device" : "iPhone SE (375x667, mobile user agent)",
+    "viewport" : "375x2668",
+    "direction" : "rtl",
+    "documentScrollWidth" : 100374,
+    "overflowPx" : 98874,
+    "hasHorizontalOverflow" : true,
+    "clippedOffscreenElements" : 0,
+    "offenders" : [ {
+      "selector" : "header.fixed.top-0",
+      "overflowPx" : 1125,
+      "widthPx" : 1500
+    }, {
+      "selector" : "div.relative.z-[70]",
+      "overflowPx" : 1125,
+      "widthPx" : 1500
+    }, {
+      "selector" : "button.group.relative",
+      "overflowPx" : 1095,
+      "widthPx" : 77
+    }, {
+      "selector" : "span.font-sans.text-xs",
+      "overflowPx" : 1062,
+      "widthPx" : 44
+    }, {
+      "selector" : "svg",
+      "overflowPx" : 1095,
+      "widthPx" : 21
+    }, {
+      "selector" : "path",
+      "overflowPx" : 1088,
+      "widthPx" : 12
+    }, {
+      "selector" : "div.burger-menu-panel.fixed",
+      "overflowPx" : 2625,
+      "widthPx" : 1500
+    }, {
+      "selector" : "div.flex.min-h-full",
+      "overflowPx" : 2625,
+      "widthPx" : 1500
+    } ]
+  },
+  "executive_scorecard" : {
+    "overall_score" : 86,
+    "grade" : "A",
+    "speed_mobile_ux" : 65,
+    "lead_gen_forms" : 85,
+    "seo_visibility" : 94,
+    "security_stability" : 100,
+    "ai_visibility" : 100,
+    "top_vulnerabilities" : [ {
+      "impact" : "Менеджеры разбирают спам вместо звонков реальным клиентам, а email-рассылки уходят в папку «Спам».",
+      "title" : "Лид-формы открыты для ботов и спам-заявок",
+      "issue" : "Найдено форм: 1 — ни одна не защищена Cloudflare Turnstile, reCAPTCHA или honeypot-ловушкой.",
+      "solution" : "Подключение Cloudflare Turnstile и AI-фильтрации заявок Erythro.ai перед попаданием лида в CRM."
+    }, {
+      "impact" : "Мобильные посетители видят «сломанный» сайт и уходят с первого экрана, сжигая бюджет Google Ads и Meta Ads.",
+      "title" : "Паразитный боковой скролл ломает мобильную верстку",
+      "issue" : "На экране 375px контент выходит за границы на 98874px (источник: header.fixed.top-0).",
+      "solution" : "Адаптивная переверстка под 375–430px и регрессионные проверки мобильной сетки от Erythro.ai."
+    }, {
+      "impact" : "Каждые +100 ms задержки снижают конверсию рекламного трафика и увеличивают стоимость лида.",
+      "title" : "Ускорение Core Web Vitals и мобильного LCP",
+      "issue" : "Даже при хороших средних баллах мобильные LCP и INP можно довести до целевых 1.5 s и 200 ms.",
+      "solution" : "Сжатие Next-Gen изображений, критический CSS и CDN-кэширование от Erythro.ai."
+    } ],
+    "findings_total" : 2
+  },
+  "ai_visibility" : {
+    "llms_txt" : {
+      "status" : 200,
+      "ok" : true,
+      "has_h1" : true,
+      "has_brand" : true,
+      "has_structure" : true
+    },
+    "mcp_manifest" : {
+      "status" : 200,
+      "content_type" : "application/json",
+      "has_mcp_version" : true,
+      "has_endpoints" : true,
+      "ok" : true
+    },
+    "mcp_brand_api" : {
+      "status" : 200,
+      "has_name" : true,
+      "has_url" : true,
+      "has_canonical_pages" : true,
+      "ok" : true,
+      "warn_missing_canonical" : false
+    },
+    "about_page" : {
+      "status" : 200,
+      "has_brand_markers" : true,
+      "ok" : true
+    },
+    "robots_ai" : {
+      "status" : 200,
+      "severe_block" : false,
+      "blocked_bots" : [ ],
+      "allowed_bots" : [ "GPTBot", "ClaudeBot", "CCBot", "Google-Extended" ],
+      "cloudflare_managed" : false,
+      "ok" : true
+    },
+    "dom" : {
+      "organization_schema" : true,
+      "organization_details" : {
+        "hasName" : true,
+        "hasUrl" : true,
+        "hasSameAs" : true,
+        "hasContactPoint" : true
+      },
+      "faq_schema" : true,
+      "llms_describedby" : true,
+      "data_layer_present" : true,
+      "gtag_consent_stub" : true,
+      "ga4_id_present" : true
+    },
+    "checks_passed" : 7,
+    "checks_total" : 7,
+    "score" : 100
+  },
+  "timestamp" : 1787393724114
 }
